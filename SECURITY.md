@@ -2,6 +2,9 @@
 
 ## Reporting
 
+Security reports and vulnerability disclosures should be sent to developer@mohamedosama.me.
+ترسل بلاغات الثغرات الأمنية والإفصاحات الأمنية إلى developer@mohamedosama.me.
+
 This is a private repository. Report security issues directly to @mohamedosamaai.
 
 Do not open public issues or pull requests that include secrets, credentials, access tokens, private keys, customer data, or exploitable implementation details.
