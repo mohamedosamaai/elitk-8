@@ -1,6 +1,29 @@
-# Mohamed Resonance
+<div align="center">
 
-A cinematic, interactive 3D visualizer blending generative AI, real-time audio reactivity, and face tracking. The experience revolves around a dynamic "Hero Number 8" composed of thousands of particles that respond organically to voice input, environmental sounds, and user interactions.
+  # Mohamed Resonance
+
+  **An immersive real-time particle world where sound, voice, movement, and generative interaction shape a cinematic number eight.**
+
+  [![Three.js](https://img.shields.io/badge/Three.js-WebGL-000000?style=for-the-badge&logo=three.js&logoColor=white)](https://threejs.org)
+  [![React Three Fiber](https://img.shields.io/badge/React_Three_Fiber-3D-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://docs.pmnd.rs/react-three-fiber)
+  [![TypeScript](https://img.shields.io/badge/TypeScript-Strict-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org)
+  [![MediaPipe](https://img.shields.io/badge/MediaPipe-Vision-00A67E?style=for-the-badge)](https://ai.google.dev/edge/mediapipe/solutions/guide)
+
+  [Contributing](CONTRIBUTING.md) · [Security](SECURITY.md)
+
+  **A signature interactive experiment by [Mohamed Osama](https://github.com/mohamedosamaai)**
+</div>
+
+---
+
+## Experience Pillars
+
+| Signal | Response |
+|---|---|
+| Sound | Frequency-driven pulse, glow, and particle displacement |
+| Voice | Contextual interaction and spoken guidance |
+| Presence | Camera and face tracking influence the scene |
+| Touch | Pointer, drag, scroll, and scatter controls |
 
 ## Live Concept
 This project showcases a "resonance" particle engine built using React Three Fiber and custom WebGL shaders. The application listens and reacts to voice, audio, and visual cues—morphing into various shapes and formations while keeping the iconic "8" visible. An integrated AI assistant uses real-time local knowledge and Text-To-Speech to guide the user, shaping the environment organically.

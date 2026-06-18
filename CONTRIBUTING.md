@@ -17,3 +17,7 @@
 - Do not commit generated credentials, `.env` files, database dumps, or private customer data.
 - Avoid broad refactors unless they are required for the task.
 - Preserve existing deployment behavior unless a change is explicitly requested.
+
+## Commit and automation policy
+
+All contributors and repository automation must follow [the repository commit policy](.github/COMMIT_POLICY.md). In particular, use a working branch and pull request, keep commit messages focused on the change, and do not add tool/model attribution or `Co-authored-by` trailers.
