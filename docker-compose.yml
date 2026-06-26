@@ -1,0 +1,15 @@
+services:
+  resonance:
+    build: .
+    container_name: elitk-resonance
+    restart: unless-stopped
+    expose:
+      - "3000"
+    env_file:
+      - .env
+    networks:
+      - caddy_net
+
+networks:
+  caddy_net:
+    external: true
