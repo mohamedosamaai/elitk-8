@@ -190,8 +190,10 @@ See [`LICENSE`](LICENSE) for the full notice.
 | **Company** | BagbackTech (Bagback Digital Solutions) — CR 218773 |
 | **Author** | Mohamed Osama — Systems & AI Business Architect, Dubai UAE |
 | **GitHub** | [@mohamedosamaai](https://github.com/mohamedosamaai) |
-| **Portfolio** | [mohamedosama.me](https://mohamedosama.me) |
-| **Email** | [hello@bagbacktech.com](mailto:hello@bagbacktech.com) |
+| **LinkedIn** | [@mohamedosamaai](https://www.linkedin.com/in/mohamedosamaai) |
+| **Instagram** | [@mohamedosamaai](https://instagram.com/mohamedosamaai) |
+| **Personal Site** | [mohamedosama.me](https://mohamedosama.me) |
+| **Email** | [im@mohamedosama.me](mailto:im@mohamedosama.me) |
 
 ---
 
@@ -204,18 +206,19 @@ See [`LICENSE`](LICENSE) for the full notice.
 | **Elitk** | AI operating system for social media, ads, CRM, outreach, and growth | [![](https://img.shields.io/badge/-elitk.com-6D4AFF?style=flat-square)](https://elitk.com) |
 | **Elitk Library** | 2,771 curated AI prompts, MCP profiles, and developer skill playbooks | [![](https://img.shields.io/badge/-library.elitk.com-4285F4?style=flat-square)](https://library.elitk.com) |
 | **Elitk Ops** | Field operations OS for technical-service and maintenance companies | [![](https://img.shields.io/badge/-ops.elitk.com-5B20F0?style=flat-square)](https://ops.elitk.com) |
-| **BagbackTech** | AI product studio, startup evaluation, and proof of work | [![](https://img.shields.io/badge/-bagbacktech.com-000000?style=flat-square)](https://bagbacktech.com/ar) |
+| **BagbackTech** | AI product studio, startup evaluation, and proof of work | [![](https://img.shields.io/badge/-bagbacktech.com-000000?style=flat-square)](https://bagbacktech.com) |
 | **Bagback Shop** | Multi-vendor commerce — retail, affiliate, payments, and fulfillment | [![](https://img.shields.io/badge/-bagback.shop-FF2D20?style=flat-square)](https://bagback.shop) |
 | **La Forma** | Bilingual technical services platform and lead-generation for UAE | [![](https://img.shields.io/badge/-laforma.ae-0A7F5A?style=flat-square)](https://laforma.ae) |
-| **Portfolio** | Developer portfolio with admin dashboard and AI-ready SEO | [![](https://img.shields.io/badge/-mohamedosama.me-38bdf8?style=flat-square)](https://mohamedosama.me) |
+| **Personal Site** | Mohamed Osama's personal website — AI-ready SEO, project archive | [![](https://img.shields.io/badge/-mohamedosama.me-38bdf8?style=flat-square)](https://mohamedosama.me) |
 
 ---
 
 <div align="center">
 
 [![GitHub](https://img.shields.io/badge/GitHub-mohamedosamaai-181717?style=for-the-badge&logo=github)](https://github.com/mohamedosamaai)
-[![Portfolio](https://img.shields.io/badge/Portfolio-mohamedosama.me-38bdf8?style=for-the-badge)](https://mohamedosama.me)
-[![Company](https://img.shields.io/badge/BagbackTech-bagbacktech.com-000000?style=for-the-badge)](https://bagbacktech.com/ar)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-mohamedosamaai-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/mohamedosamaai)
+[![Personal Site](https://img.shields.io/badge/Personal_Site-mohamedosama.me-38bdf8?style=for-the-badge)](https://mohamedosama.me)
+[![Company](https://img.shields.io/badge/BagbackTech-bagbacktech.com-000000?style=for-the-badge)](https://bagbacktech.com)
 [![Email](https://img.shields.io/badge/Email-hello%40bagbacktech.com-EA4335?style=for-the-badge&logo=gmail&logoColor=white)](mailto:hello@bagbacktech.com)
 
 </div>

@@ -1,0 +1,28 @@
+/* TEAM */
+Name: Mohamed Osama
+Role: Systems & AI Business Architect
+Location: Dubai, UAE
+Website: https://mohamedosama.me
+GitHub: https://github.com/mohamedosamaai
+LinkedIn: https://linkedin.com/in/mohamedosamaai
+Instagram: https://instagram.com/mohamedosamaai
+Email: im@mohamedosama.me
+
+/* COMPANY */
+Name: BagbackTech (Bagback Digital Solutions)
+Registration: CR 218773
+Website: https://bagbacktech.com
+Contact: hello@bagbacktech.com
+
+/* PRODUCTS */
+Elitk          — https://elitk.com
+Elitk Ops      — https://ops.elitk.com
+Elitk Library  — https://library.elitk.com
+BagbackTech    — https://bagbacktech.com
+Bagback Shop   — https://bagback.shop
+La Forma       — https://laforma.ae
+Personal Site  — https://mohamedosama.me
+
+/* SITE */
+Built with: React 18, Three.js, Vite, TypeScript, Google Gemini AI
+Last update: 2026-06
