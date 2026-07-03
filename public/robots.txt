@@ -1,4 +1,2 @@
 User-agent: *
 Allow: /
-
-Sitemap: https://8.elitk.com/sitemap.xml
