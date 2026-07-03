@@ -1,0 +1,27 @@
+{
+  "name": "elitk-8",
+  "short_name": "elitk-8",
+  "description": "AI-powered interactive 3D experience by Mohamed Osama.",
+  "id": "/",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#06070f",
+  "theme_color": "#06070f",
+  "orientation": "any",
+  "categories": ["entertainment", "productivity", "utilities"],
+  "icons": [
+    {
+      "src": "https://mohamedosama.me/mo-hero-v2.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "https://mohamedosama.me/mo-hero-v2.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
