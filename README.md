@@ -1,6 +1,6 @@
 <div align="center">
 
-  # Mohamed Resonance
+  # elitk-8
 
   ### A real-time immersive particle world where sound, voice, presence, and AI shape a cinematic number eight
 
