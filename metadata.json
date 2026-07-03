@@ -1,6 +1,6 @@
 {
-  "name": "Resonance 8",
-  "description": "A monolithic cinematic experience where autonomous agents harmonize around the emergence of Mohamed. Features neural eye tracking, optical flow detection, and collective AI group dynamics.",
+  "name": "elitk-8",
+  "description": "A cinematic AI interactive experience hosted on https://8.elitk.com where sound, voice, camera presence, and AI shape a real-time immersive number eight.",
   "requestFramePermissions": [
     "camera",
     "microphone"
