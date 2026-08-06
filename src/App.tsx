@@ -30,9 +30,46 @@ import { Resonance3D } from './Resonance3D';
 import { GoogleGenAI } from "@google/genai";
 import { getGreeting, getRelevantKnowledge } from './knowledge';
 
+import { ErrorBoundary } from './ErrorBoundary';
+
+const WebGLFallback = () => (
+  <div className="absolute inset-0 flex flex-col items-center justify-center p-8 text-center bg-[#020205] z-10">
+    <div className="text-red-500 font-mono text-xs tracking-[0.2em] mb-3">
+      [3D ENVIRONMENT FAULT / WEBGL CONTEXT LOST]
+    </div>
+    <p className="text-white/45 font-sans text-[10px] max-w-xs leading-relaxed">
+      Unable to initialize WebGL 2.0. Please check your browser's hardware acceleration settings.
+    </p>
+  </div>
+);
+
 const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
 
 export default function App() {
+  const sessionIdRef = useRef('elitk_' + Math.random().toString(36).substring(2) + Date.now().toString(36));
+
+  // Non-blocking: logging failures must never interrupt the AI response flow.
+  const logToCentralLogger = async (role: 'user' | 'assistant', content: string) => {
+    const url = process.env.CHAT_LOGGER_URL;
+    const apiKey = process.env.LOGGER_API_KEY;
+    if (!url || !apiKey) return;
+    try {
+      await fetch(url, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          apiKey,
+          project: 'elitk',
+          sessionId: sessionIdRef.current,
+          user: 'guest',
+          role,
+          content
+        })
+      });
+    } catch (e) {
+      console.warn('[Logger] Central log write failed:', e);
+    }
+  };
   const [vibe, setVibe] = useState<VibeMode>(VibeMode.Consensus);
   const [phase, setPhase] = useState<'CHAOS' | 'NEGOTIATION' | 'CONSENSUS' | 'LOCKED'>('CHAOS');
   const [audioEnabled, setAudioEnabled] = useState(false);
@@ -94,7 +131,6 @@ export default function App() {
     } else {
       setUserLang('en');
     }
-    // Task 2: Initial suggested questions
     setSuggestions(["عرّف نفسك", "Introduce yourself"]);
   }, []);
 
@@ -111,7 +147,7 @@ export default function App() {
       return [{ id: logId, text, type }, ...prev].slice(0, 8);
     });
     
-    // Auto-remove message after 4.5 seconds
+    // Logs are ephemeral display items — 4.5s gives enough reading time without cluttering the HUD.
     setTimeout(() => {
       setLogs(prev => prev.filter(l => l.id !== logId));
     }, 4500);
@@ -163,9 +199,7 @@ export default function App() {
     hueShiftRef.current = 0.0;
   };
 
-  useEffect(() => {
-    // Keep the shape unless user manually changes it. Removed 10s auto-revert.
-  }, [controlShape]);
+
 
   // Sync state to engine/refs
   useEffect(() => {
@@ -325,11 +359,6 @@ export default function App() {
     }
 
     addLog(`INITIALIZING: ${command.displayName}`, 'status');
-    if (audioEnabled) {
-      // Just a subtle sound effect or skip English text processing
-      // to avoid forcing Arabic TTS to read English logic strings.
-    }
-
     shockwaveRef.current = 1.0;
   }, [audioEnabled, generateTextTargets, generateBrainTargets, setActiveCommand, setVisualState]);
 
@@ -394,7 +423,6 @@ export default function App() {
 
   const parseAIJson = (rawText: string, targetLanguage: 'ar' | 'en'): { reply: string; suggestions?: string[], sentiment: string } => {
     let parsed: any = {};
-    console.debug("rawText from AI:", rawText);
     try {
       let cleanText = (rawText || "").trim();
       const firstBrace = cleanText.indexOf('{');
@@ -407,7 +435,7 @@ export default function App() {
         throw new Error("No JSON object found in response");
       }
     } catch (e) {
-      console.debug("AI non-JSON fallback used", e);
+      // Non-blocking fallback for unstructured text formats
     }
 
     const fallbackAr = "حدث اضطراب في الرنين. أعد المحاولة.";
@@ -437,6 +465,9 @@ export default function App() {
     setSuggestions([]);
     addLog("ROUTING THROUGH NEURAL GATEWAY...", "status");
     audioEngine.stop(); // Use unified stop
+    
+    // Log user message to central logger
+    logToCentralLogger('user', prompt);
     
     // Switch to Brain Shape when thinking IMMEDIATELY
     setCustomText("THINKING");
@@ -470,6 +501,7 @@ export default function App() {
           audioEngine.speak(instantGreeting);
           triggerShockwave();
        }, 500);
+       logToCentralLogger('assistant', instantGreeting);
        return;
     }
 
@@ -629,8 +661,9 @@ REPLY STRUCTURE:
       commandStartTimeRef.current = performance.now();
       shockwaveRef.current = 1.0;
       
+      logToCentralLogger('assistant', fullReplyText);
     } catch (err) {
-      console.error(err);
+      console.warn('[AI] Conversational pipeline failed:', err instanceof Error ? err.message : String(err));
       addLog("NEURAL LINK INTERRUPTED", "status");
       setVisualState(VisualState.Idle8);
     } finally {
@@ -686,7 +719,9 @@ REPLY STRUCTURE:
       try {
         recognitionRef.current.stop();
         audioEngine.stopMic();
-      } catch (e) {}
+      } catch (e) {
+        void e; // recognition.stop() throws if already stopped — safe to ignore
+      }
       setIsListening(false);
       setMicEnabled(false);
       addLog("VOICE DISABLED", "status");
@@ -851,8 +886,10 @@ REPLY STRUCTURE:
 
   const currentSettings = VIBE_CONFIGS[vibe];
 
+  // Three.js / R3F Canvas handles viewport resize internally — this hook only exists
+  // as a stable reference for the resize event listener lifecycle.
   const handleResize = useCallback(() => {
-    // Three.js handles resizing automatically
+    void 0;
   }, []);
 
   useEffect(() => {
@@ -871,9 +908,7 @@ REPLY STRUCTURE:
     }
   }, [phase, vibe, audioEnabled]);
 
-  useEffect(() => {
-    // Vibe changes are now reflected in the 3D engine's simulation
-  }, [vibe, audioEnabled]);
+
 
   const triggerShockwave = () => {
     shockwaveRef.current = 1.0;
@@ -973,7 +1008,6 @@ REPLY STRUCTURE:
   };
 
   const handleWheel = (e: React.WheelEvent) => {
-    // True 3D Zoom feeling
     const scaleFactor = 0.003;
     const nextZoom = Math.max(0.8, Math.min(controlZoom - e.deltaY * scaleFactor, 2.5));
     setControlZoom(nextZoom);
@@ -1297,6 +1331,7 @@ REPLY STRUCTURE:
 
       {/* Main Simulation 3D Canvas */}
       <div className="absolute inset-0 cursor-crosshair">
+        <ErrorBoundary fallback={<WebGLFallback />}>
          <Canvas style={{ pointerEvents: 'none' }} camera={{ position: [0, 0, 90], fov: 40, near: 0.1, far: 2000 }} dpr={[1, 2]}>
            <color attach="background" args={['#020205']} />
            <Resonance3D 
@@ -1322,6 +1357,7 @@ REPLY STRUCTURE:
               faceDataRef={faceDataRef}
            />
          </Canvas>
+        </ErrorBoundary>
       </div>
 
       {/* Neural Interface Hub - Cleaned & Simplified */}
