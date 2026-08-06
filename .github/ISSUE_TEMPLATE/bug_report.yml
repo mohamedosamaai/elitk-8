@@ -1,0 +1,44 @@
+name: 🐛 Bug Report
+description: File a structured bug report for the ELITK-8 platform.
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please provide clear steps and logs to help diagnose and resolve the issue.
+  - type: textarea
+    id: problem-description
+    attributes:
+      label: Problem Description
+      description: Provide a clear and concise explanation of the bug.
+      placeholder: Describe what is failing and the impact.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to Reproduce
+      description: Explain how to trigger the bug.
+      placeholder: |
+        1. Start local server with `npm run dev`
+        2. Navigate to `http://localhost:5173`
+        3. Trigger face tracker and observe console log
+    validations:
+      required: true
+  - type: textarea
+    id: behavior
+    attributes:
+      label: Expected vs Actual Behavior
+      description: Describe what you expected to happen versus what actually happened.
+      placeholder: Expected 60 FPS particle alignment but observed rendering drop to 15 FPS.
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: System Logs/Context
+      description: Attach relevant terminal output or browser console logs.
+      placeholder: Paste stack traces, Pino logs, or WebGL warnings here.
+    validations:
+      required: false

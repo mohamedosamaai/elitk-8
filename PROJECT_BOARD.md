@@ -19,35 +19,51 @@ A dataset of 12 engineering issues has been created and populated in the reposit
 
 ---
 
-## 2. Project Board Setup Guide
+## 2. Enterprise Custom Fields
 
-Since GitHub Project Boards (New Projects beta) require account-level OAuth scopes, follow these 4 simple steps to set up the Kanban Board and views on GitHub:
+The following custom fields have been programmatically created and populated for all 12 project issues on the Project Board:
+* **`Priority` (Single Select):** Options: `P0 - Critical`, `P1 - High`, `P2 - Medium`, `P3 - Low`
+* **`Subsystem` (Single Select):** Options: `Core AI`, `Data Layer`, `Auth/Middleware`, `DevOps`
+* **`Estimate` (Number):** Story points (e.g., 2, 3, 5, 8)
+* **`Target Date` (Date):** Milestone completion targets.
+* **`Iteration` (Single Select):** Sprint planning: `Sprint 1 (v1.0 MVP)`, `Sprint 2 (v1.1 Perf)`, `Sprint 3 (v2.0 Scaling)`
 
-### Step 1: Create the Project
-1. Navigate to your GitHub profile or organization and click **Projects** ➡️ **New Project** (select **Board** template).
-2. Link the project to this repository (`mohamedosamaai/elitk-8`).
+---
 
-### Step 2: Configure Kanban Views
-Create the following custom tabs/views on the project board:
+## 3. Project Board Custom Views
 
-#### 📌 View 1: Kanban Board
-* **Layout:** Board
-* **Columns (Status):**
-  * `📋 Backlog / v2.0 Roadmap` (Contains issues mapped to `v2.0.0 Roadmap`)
-  * `🔄 In Progress` (Contains issues mapped to `v1.1.0 Performance`)
-  * `✅ Done / Release v1.0` (Contains closed issues mapped to `v1.0.0 Stable`)
-* **Filter:** `repo:mohamedosamaai/elitk-8`
-* **Group by:** `Status`
+Configure the following 8 custom tabs/views on the GitHub Project Board interface to optimize engineering operations:
 
-#### 🗺️ View 2: Roadmap (Timeline)
+### 🗺️ View 1: 🗺️ System Roadmap
 * **Layout:** Roadmap
-* **Group by:** `Milestone`
-* **Filter:** `repo:mohamedosamaai/elitk-8`
+* **Date Field:** `Target Date` / `Iteration`
+* **Group by:** `Milestone` (Target Milestone)
 
-#### 🏷️ View 3: Architecture Breakdown
-* **Layout:** Table
-* **Group by:** `Subsystems` (Core AI, Data Layer, Auth/Middleware, DevOps labels)
+### 📌 View 2: 📌 Kanban Board
+* **Layout:** Board
+* **Group by:** `Status` (Todo, In Progress, Done)
 
-#### 📊 View 4: Priority Matrix
+### 🎯 View 3: 🎯 Planning & Backlog
 * **Layout:** Table
-* **Sort by:** `Priority` (Ascending: `P0 - Critical` ➡️ `P3 - Low`)
+* **Filter:** `is:open`
+* **Sort by:** `Priority` (Ascending)
+
+### 🚀 View 4: 🚀 Feature Release
+* **Layout:** Table
+* **Group by:** `Milestone` (Target Milestone)
+
+### 🐛 View 5: 🐛 Bug Tracker
+* **Layout:** Table
+* **Filter:** `label:bug`
+
+### 🔄 View 6: 🔄 Sprints & Iteration
+* **Layout:** Board
+* **Group by:** `Iteration`
+
+### 🏗️ View 7: 🏗️ Architecture Breakdown
+* **Layout:** Table
+* **Group by:** `Subsystem` (Core AI, Data Layer, Auth/Middleware, DevOps)
+
+### 💡 View 8: 💡 Retrospective & Debt
+* **Layout:** Table
+* **Filter:** `label:refactor` OR `label:tech-debt`

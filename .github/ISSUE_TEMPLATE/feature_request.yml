@@ -1,0 +1,52 @@
+name: 🚀 Feature Request
+description: Propose a new feature or enhancement for the ELITK-8 platform.
+title: "[Feature]: "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please provide a detailed description of the proposed feature.
+  - type: textarea
+    id: description
+    attributes:
+      label: Feature Description
+      description: Provide a clear and concise explanation of what the feature is and why it is needed.
+      placeholder: Describe the problem this feature solves and the proposed implementation.
+    validations:
+      required: true
+  - type: dropdown
+    id: subsystem
+    attributes:
+      label: Subsystem
+      description: Select the architectural component this feature belongs to.
+      options:
+        - Core AI
+        - Data Layer
+        - Auth/Middleware
+        - DevOps
+    validations:
+      required: true
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority
+      description: Select the target priority SLA for this feature.
+      options:
+        - P0 - Critical
+        - P1 - High
+        - P2 - Medium
+        - P3 - Low
+    validations:
+      required: true
+  - type: textarea
+    id: criteria
+    attributes:
+      label: Acceptance Criteria
+      description: List the technical criteria required to mark this task as done.
+      placeholder: |
+        - [ ] Verify TypeScript types compile cleanly.
+        - [ ] Write unit/integration tests.
+        - [ ] Document in System Wiki.
+    validations:
+      required: true
