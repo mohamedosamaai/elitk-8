@@ -122,25 +122,23 @@ export class AudioEngine {
   }
 
   async warmup() {
-     // Pre-initialize audio context and AI SDK
-     try {
-        await this.init();
-        if (!this.aiInstance) {
-           // @ts-ignore
-           const apiKey = process.env.GEMINI_API_KEY;
-           if (apiKey) {
-              const { GoogleGenAI } = await import("@google/genai");
-              this.aiInstance = new GoogleGenAI({ apiKey });
-           }
+    try {
+      await this.init();
+      if (!this.aiInstance) {
+        const apiKey = (process as NodeJS.Process & { env: Record<string, string | undefined> }).env.GEMINI_API_KEY;
+        if (apiKey) {
+          const { GoogleGenAI } = await import("@google/genai");
+          this.aiInstance = new GoogleGenAI({ apiKey });
         }
-     } catch (e) {
-        console.warn("Audio/AI warmup failed", e);
-     }
+      }
+    } catch (e) {
+      console.warn('[AudioEngine] warmup failed:', e);
+    }
   }
   
   private setupReverb() {
-    // We removed the scary synthesized convolver reverb entirely.
-    // Clean delay network is enough for spatial width without metallic noise.
+    // Convolver reverb removed — the delay feedback network provides sufficient spatial
+    // width and avoids the metallic artifacts of synthesized impulse responses.
   }
 
   startMusic() {
@@ -188,7 +186,9 @@ export class AudioEngine {
     
     setTimeout(() => {
        this.activeOscillators.forEach(osc => {
-           try { osc.stop(); osc.disconnect(); } catch(e){}
+           try { osc.stop(); osc.disconnect(); } catch (e) {
+             void e; // stop() throws if the oscillator already reached its scheduled stop time
+           }
        });
        this.activeOscillators = [];
     }, 2500);
@@ -593,11 +593,10 @@ export class AudioEngine {
             if (response.status === 429) this.ttsQuotaExhausted = true;
             try {
                const errorData = await response.json();
-               console.error("TTS API Error:", errorData);
-               if (errorData.error && errorData.error.message && errorData.error.message.includes("API key expired")) {
-                   alert("Google TTS API Key is EXPIRED! Audio will fall back to robotic browser voice. Please renew GOOGLE_TTS_API_KEY in AI Studio Settings.");
-               }
-            } catch(e) {}
+               console.error('[TTS] API error:', errorData);
+            } catch (e) {
+               void e; // response body may be empty on network errors
+            }
             return null;
         }
 
@@ -700,7 +699,9 @@ export class AudioEngine {
       try {
         source.stop();
         source.disconnect();
-      } catch (e) {}
+      } catch (e) {
+        void e; // source.stop() throws if playback already ended
+      }
     });
     this.activeTTSSources.clear();
     this.currentTTSSource = null;

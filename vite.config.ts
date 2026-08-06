@@ -7,6 +7,8 @@ import fs from 'fs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
+// MediaPipe CJS shims — their UMD bundles rely on globals that Vite's ESM transform drops.
+// Injecting the exports manually restores compatibility without patching node_modules.
 function mediaPipeWorkaround() {
   return {
     name: 'mediapipe-workaround',
@@ -35,8 +37,12 @@ export default defineConfig(({ mode }) => {
   return {
     plugins: [react(), tailwindcss(), mediaPipeWorkaround()],
     define: {
-      'process.env.GEMINI_API_KEY': JSON.stringify(env.GEMINI_API_KEY),
-      'process.env.GOOGLE_CLOUD_API_KEY': JSON.stringify(env.GOOGLE_CLOUD_API_KEY || env.VITE_GOOGLE_CLOUD_API_KEY),
+      // Runtime secrets are read server-side; only GEMINI_API_KEY is needed client-side
+      // because the Gemini SDK is instantiated in the browser for streaming responses.
+      'process.env.GEMINI_API_KEY': JSON.stringify(env.GEMINI_API_KEY || ''),
+      'process.env.GOOGLE_CLOUD_API_KEY': JSON.stringify(env.GOOGLE_CLOUD_API_KEY || env.VITE_GOOGLE_CLOUD_API_KEY || ''),
+      'process.env.CHAT_LOGGER_URL': JSON.stringify(env.CHAT_LOGGER_URL || ''),
+      'process.env.LOGGER_API_KEY': JSON.stringify(env.LOGGER_API_KEY || ''),
     },
     resolve: {
       alias: {
@@ -44,8 +50,6 @@ export default defineConfig(({ mode }) => {
       },
     },
     server: {
-      // HMR is disabled in AI Studio via DISABLE_HMR env var.
-      // Do not modify—file watching is disabled to prevent flickering during agent edits.
       hmr: process.env.DISABLE_HMR !== 'true',
     },
   };

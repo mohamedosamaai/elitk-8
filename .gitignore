@@ -1,6 +1,28 @@
+# Dependencies
 node_modules/
-coverage/
-.DS_Store
-*.log
-.env*
+
+# Build output
+dist/
+.vite/
+
+# Environment — never commit secrets
+.env
+.env.local
+.env.*.local
 !.env.example
+
+# Editor workspace files
+*.swp
+*.swo
+.vscode/settings.json
+
+# OS artifacts
+.DS_Store
+Thumbs.db
+
+# Test coverage
+coverage/
+
+# Logs
+*.log
+npm-debug.log*

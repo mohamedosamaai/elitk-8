@@ -23,7 +23,6 @@ export const useFaceTracker = (enabled: boolean, onFaceUpdate: (data: FaceData) 
   useEffect(() => {
     if (!enabled) {
       if (isActiveRef.current) {
-        console.info("Stopping face tracking systems...");
         isActiveRef.current = false;
         
         if (cameraRef.current) {
@@ -117,7 +116,7 @@ export const useFaceTracker = (enabled: boolean, onFaceUpdate: (data: FaceData) 
           try {
             await meshRef.current.send({ image: video });
           } catch (e) {
-            // Frame dropped or mesh closed
+            void e; // frame dropped during rapid pose changes or when mesh is mid-close
           }
         }
       },
@@ -126,10 +125,8 @@ export const useFaceTracker = (enabled: boolean, onFaceUpdate: (data: FaceData) 
     });
     
     cameraRef.current = camera;
-    camera.start().then(() => {
-      console.info("Face tracking system active.");
-    }).catch(e => {
-      console.warn("Camera access inhibited:", e.message);
+    camera.start().catch(e => {
+      console.warn('[FaceTracker] Camera access denied:', (e as Error).message);
       isActiveRef.current = false;
     });
 
