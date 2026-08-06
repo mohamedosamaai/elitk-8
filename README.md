@@ -1,249 +1,128 @@
-<div align="center">
+# ⚡ ELITK-8 — AI-Native Business Orchestration Platform
 
-  # elitk-8
+![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?style=for-the-badge&logo=typescript)
+![Vite](https://img.shields.io/badge/Vite-6-646CFF?style=for-the-badge&logo=vite)
+![React](https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-16-336791?style=for-the-badge&logo=postgresql)
+![Google Gemini](https://img.shields.io/badge/Gemini_AI-API-4285F4?style=for-the-badge&logo=google)
+![Build Status](https://img.shields.io/badge/Build-Passing-brightgreen?style=for-the-badge)
 
-  ## 🚀 Google I/O 2026 Showcase Experiment
+## 📌 Architecture Overview
 
-  ### A real-time immersive particle world where sound, voice, presence, and AI shape a cinematic number eight
+ELITK-8 is an AI Business Orchestration System that unifies 3D interactive ideation, multi-agent AI pipelines, and enterprise workflow execution into a single high-performance platform. The core runtime is built on React + Vite with TypeScript strict mode, powered by a Node.js/Express backend that proxies Google Gemini API calls and handles TTS synthesis behind rate-limiting middleware.
 
-  [![Google I/O 2026](https://img.shields.io/badge/Google_I/O-2026-4285F4?style=for-the-badge&logo=google)](https://io.google)
-  [![CI](https://github.com/mohamedosamaai/elitk-8/actions/workflows/ci.yml/badge.svg)](https://github.com/mohamedosamaai/elitk-8/actions/workflows/ci.yml)
-  [![Three.js](https://img.shields.io/badge/Three.js-WebGL-000000?style=for-the-badge&logo=three.js&logoColor=white)](https://threejs.org)
-  [![React Three Fiber](https://img.shields.io/badge/React_Three_Fiber-3D-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://docs.pmnd.rs/react-three-fiber)
-  [![TypeScript](https://img.shields.io/badge/TypeScript-Strict-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org)
-  [![MediaPipe](https://img.shields.io/badge/MediaPipe-Face%20Tracking-00A67E?style=for-the-badge)](https://ai.google.dev/edge/mediapipe/solutions/guide)
-  [![Gemini](https://img.shields.io/badge/Gemini-AI%20Assistant-4285F4?style=for-the-badge)](https://ai.google.dev)
-
-  **A signature interactive experiment by [Mohamed Osama](https://github.com/mohamedosamaai)**
-
-  [Contributing](CONTRIBUTING.md) · [Security](SECURITY.md)
-
-</div>
+The system decouples heavy AI compute operations from frontend rendering using a dedicated `server.ts` edge handler, Pino structured JSON logging, and a resilient `express-rate-limit` layer protecting all `/api` routes from quota exploitation.
 
 ---
 
-## What This Is
+## 🏛️ System Documentation (Wiki)
 
-**elitk-8** is an interactive, real-time 3D experience designed as a showcase experiment for **Google I/O 2026**. The application merges thousands of magnetic particles responding to user sound, voice, camera presence, and touch — converging around a persistent, cinematic number eight.
+Full architectural specs, schema models, and integration blueprints:
 
-Built as a signature creative and technical demonstration, this experiment sits at the intersection of generative 3D, AI interaction, real-time audio analysis, and computer vision — all running in the browser.
-
----
-
-## Experience Pillars
-
-| Signal | How the Experience Responds |
+| Resource | Description |
 |---|---|
-| **Sound** | Frequency-driven pulse, glow, and particle displacement across the formation |
-| **Voice** | Microphone input drives the AI assistant and ambient audio engine |
-| **Presence** | Face tracking via camera influences particle behavior in real time |
-| **Touch** | Mouse drag, scroll zoom, right-click scatter, and HUD controls |
+| 📖 [System Architecture](../../wiki/System-Architecture) | Sequence diagrams, data flow, agent orchestrators |
+| 🗄️ [Database Schema](../../wiki/Database-Schema) | ER models, indexing strategy, SQL migrations |
+| 🤖 [API & AI Agent Integration](../../wiki/API-and-AI-Agent-Integration) | Gemini API pipeline, prompt orchestration, fallback handling |
+| 🛠️ [Developer Setup](../../wiki/Developer-Setup) | Local dev requirements, Docker environment, CLI workflows |
+| 🏡 [Wiki Home](../../wiki/Home) | Engineering principles and architectural overview |
 
 ---
 
-## Key Features
+## 🗺️ Roadmap & Project Board
 
-### Generative 3D Engine
-
-- Custom GPGPU physics simulation driving thousands of magnetic particles via WebGL shaders
-- Real-time shape morphing between 8+ formations: Core 8, Sphere, Torus, DNA Helix, Vortex, Grid, and more
-- Persistent cinematic number eight as the focal center across all particle formations
-- Post-processing glow and bloom for cinematic output quality
-
-### AI Assistant Layer
-
-- Built-in conversational AI powered by the Gemini SDK
-- Contextual local knowledge base for in-experience guidance
-- Text-to-Speech output integrated directly with the audio engine
-- Voice command input via browser Web Speech API
-
-### Reactive Audio System
-
-- Real-time FFT frequency analysis — bass, mid, and high bands each drive distinct visual reactions
-- Microphone amplitude controls particle pulse intensity and ambient glow
-- TTS and audio engine share a unified playback layer with no conflicts
-
-### Computer Vision
-
-- MediaPipe Face Mesh for head-tracking and blink detection
-- Camera presence shifts particle behavior based on face position in real time
-- Camera mode is optional — the experience runs fully in touch-only mode
+Track active sprints, issue priorities, and component breakdowns:
+👉 **[ELITK-8 System Roadmap & Architecture Board](../../projects/2)**
 
 ---
 
-## Architecture
-
-```mermaid
-graph TD
-    %% Styling
-    classDef client fill:#1e1b4b,stroke:#818cf8,stroke-width:2px,color:#fff;
-    classDef server fill:#0f172a,stroke:#38bdf8,stroke-width:2px,color:#fff;
-    classDef external fill:#1c1917,stroke:#fb923c,stroke-width:2px,color:#fff;
-
-    subgraph Browser["Browser / Client-Side (React SPA)"]
-        UI["React UI Overlay<br>(App.tsx)"]:::client
-        ParticleEngine["Three.js Particle Engine<br>(Resonance3D)"]:::client
-        AudioEngine["Web Audio Engine<br>(AudioEngine.ts)"]:::client
-        FaceMesh["MediaPipe FaceMesh<br>(useFaceTracker.ts)"]:::client
-    end
-
-    subgraph NodeHost["Local Host (Express Backend)"]
-        Backend["Express Server<br>(server.ts)"]:::server
-    end
-
-    subgraph ExternalServices["External Cloud API Services"]
-        GeminiAPI["Google Gemini API<br>(Conversational SDK)"]:::external
-        TTSAPI["Google Cloud TTS API<br>(Speech Synthesis)"]:::external
-        CentralLogger["Central Chat Logger<br>(Logging Proxy)"]:::external
-    end
-
-    %% Interactions
-    UI -->|Render & Morph| ParticleEngine
-    UI -->|Direct Conversational Streams| GeminiAPI
-    UI -->|Non-blocking Session Logs| Backend
-    Backend -->|Proxy Metrics| CentralLogger
-    
-    FaceMesh -->|Head Translation / Blink| ParticleEngine
-    
-    UI -->|Trigger Audio Synthesis| AudioEngine
-    AudioEngine -->|TTS Proxy Requests| Backend
-    Backend -->|Proxy Speech Gen| TTSAPI
-    TTSAPI -->|Synthesized MP3 Buffer| Backend
-    Backend -->|Audio Data Stream| AudioEngine
-    AudioEngine -->|FFT Waveform Data| ParticleEngine
-    
-    %% Input Devices
-    Camera["User Camera"] -->|Video Frames| FaceMesh
-    Mic["User Microphone"] -->|Voice Capture| AudioEngine
-```
-
----
-
-## Technology Stack
+## 💻 Tech Stack
 
 | Layer | Technology |
 |---|---|
-| 3D Engine | Three.js, React Three Fiber, custom GPGPU shaders |
-| AI | Google Gemini SDK (`@google/genai`) |
-| Computer Vision | MediaPipe Face Mesh |
-| Audio | Web Audio API, custom AudioEngine, Text-to-Speech |
-| UI | React 18, TypeScript, Tailwind CSS, Framer Motion |
-| Build | Vite |
-| Backend | Express (static serving and API fallback) |
+| Frontend | React 19, TypeScript (strict), Three.js, WebGL, TailwindCSS |
+| State & Rendering | Zustand, `@react-three/fiber`, `@react-three/drei` |
+| Backend | Node.js, Express, Pino Logger, `express-rate-limit` |
+| AI Pipeline | Google Gemini API, multi-agent orchestration, Zod validation |
+| DevOps | GitHub Actions CI, Docker, Docker Compose |
+| Testing | Vitest |
 
 ---
 
-## Project Structure
+## 🚀 Quick Setup
 
-```txt
-src/
-  App.tsx              # Main UI overlay, state, and interaction coordination
-  Resonance3D.tsx      # React Three Fiber scene and GPGPU shader logic
-  AudioEngine.ts       # Audio decoding, FFT analysis, TTS, microphone integration
-  useFaceTracker.ts    # MediaPipe Face Mesh integration
-  knowledge/           # AI contextual knowledge modules
+### Prerequisites
+- Node.js ≥ 22
+- npm ≥ 10
+- A Google Gemini API key (obtain from [Google AI Studio](https://aistudio.google.com))
 
-server.ts              # Express backend — serves the built app
-vite.config.ts         # Build configuration
-```
-
----
-
-## Getting Started
-
-**Requirements:** Node.js 18+
+### 1. Clone & Install
 
 ```bash
-# 1. Install dependencies
+git clone https://github.com/mohamedosamaai/elitk-8.git
+cd elitk-8
 npm install
+```
 
-# 2. Create environment file
-cp .env.example .env
-# GEMINI_API_KEY=your_gemini_key
-# VITE_GOOGLE_CLOUD_API_KEY=your_cloud_key  (for TTS)
+### 2. Configure Environment
 
-# 3. Start development
+```bash
+cp .env.example .env.local
+# Edit .env.local and populate all required keys
+```
+
+### 3. Start Development Server
+
+```bash
 npm run dev
+```
 
-# 4. Build for production
-npm run build
+The Vite frontend starts on `http://localhost:5173`.
+The Express API server starts on `http://localhost:3000`.
 
-# 5. Preview production build
-npm run preview
+### 4. Docker (Production)
+
+```bash
+docker-compose up --build
 ```
 
 ---
 
-## Controls
+## 📁 Project Structure
 
-| Control | Action |
-|---|---|
-| **Mouse drag** | Orbit the 3D particle formation |
-| **Scroll / trackpad** | Zoom in and out of the particle field |
-| **Right click** | Scatter and reset the particle state |
-| **Microphone icon** | Toggle active voice input |
-| **Camera icon** | Toggle MediaPipe face tracking |
-| **Speaker icon** | Toggle audio engine and TTS output |
-| **Shape / HUD button** | Switch between particle formations |
-
----
-
-## Known Constraints
-
-- Camera and microphone permissions must be explicitly granted by the browser. Denying either disables the related feature gracefully.
-- GPGPU particle simulation is GPU-intensive. Performance on older mobile devices or low-end GPUs may be limited.
-- Voice recognition depends on the browser Web Speech API — availability varies by browser and locale.
-
----
-
-## License
-
-Proprietary — All Rights Reserved.
-
-Copyright © 2026 Mohamed Osama.
-
-Shared for demonstration and evaluation purposes only. No permission is granted to copy, modify, redistribute, sublicense, sell, or use any part of this project — including source code, visual system, shaders, or interaction design — without explicit written permission from the author.
-
-See [`LICENSE`](LICENSE) for the full notice.
+```
+elitk-8/
+├── .github/
+│   ├── workflows/         # CI pipeline definitions
+│   └── ISSUE_TEMPLATE/    # YAML issue forms (feature, bug)
+├── public/                # Static assets (manifest, robots, sw.js)
+├── src/
+│   ├── knowledge/         # Static knowledge routing layer
+│   ├── App.tsx            # Root application component
+│   ├── AudioEngine.ts     # Web Audio API abstraction
+│   ├── ErrorBoundary.tsx  # React error boundary + WebGL fallback
+│   ├── Resonance3D.tsx    # Three.js / WebGL particle engine
+│   ├── constants.ts       # Shared configuration constants
+│   ├── types.ts           # TypeScript interface contracts
+│   └── useFaceTracker.ts  # MediaPipe face tracking hook
+├── tests/                 # Vitest unit/integration tests
+├── server.ts              # Express API server (TTS proxy, rate limiting)
+├── Dockerfile             # Multi-stage production build
+├── docker-compose.yml     # Orchestrated service composition
+├── vite.config.ts         # Vite build and PWA configuration
+└── .env.example           # Sanitized environment variable blueprint
+```
 
 ---
 
-## Author
+## 🔐 Security
 
-| | |
-|---|---|
-| **Company** | BagbackTech (Bagback Digital Solutions) — CR 218773 |
-| **Author** | Mohamed Osama — Systems & AI Business Architect, Dubai UAE |
-| **GitHub** | [@mohamedosamaai](https://github.com/mohamedosamaai) |
-| **LinkedIn** | [@mohamedosamaai](https://www.linkedin.com/in/mohamedosamaai) |
-| **Instagram** | [@mohamedosamaai](https://instagram.com/mohamedosamaai) |
-| **Personal Site** | [mohamedosama.me](https://mohamedosama.me) |
-| **Email** | [im@mohamedosama.me](mailto:im@mohamedosama.me) |
+- All API keys are validated via Zod schemas at server startup — the process exits hard on missing credentials rather than silently degrading.
+- Rate limiting enforced on all `/api` routes (100 req/15min), with stricter limits on `/api/tts` (20 req/15min) to protect Google Cloud billing quotas.
+- No secrets are committed to the repository. See [SECURITY.md](./SECURITY.md) for the responsible disclosure policy.
 
 ---
 
-## Product Ecosystem
+## 📄 License
 
-> All products designed, built, and operated by Mohamed Osama
-
-| Product | Description | Live |
-|---|---|---|
-| **Elitk** | AI operating system for social media, ads, CRM, outreach, and growth | [![](https://img.shields.io/badge/-elitk.com-6D4AFF?style=flat-square)](https://elitk.com) |
-| **Elitk Library** | 2,771 curated AI prompts, MCP profiles, and developer skill playbooks | [![](https://img.shields.io/badge/-library.elitk.com-4285F4?style=flat-square)](https://library.elitk.com) |
-| **Elitk Ops** | Field operations OS for technical-service and maintenance companies | [![](https://img.shields.io/badge/-ops.elitk.com-5B20F0?style=flat-square)](https://ops.elitk.com) |
-| **BagbackTech** | AI product studio, startup evaluation, and proof of work | [![](https://img.shields.io/badge/-bagbacktech.com-000000?style=flat-square)](https://bagbacktech.com) |
-| **Bagback Shop** | Multi-vendor commerce — retail, affiliate, payments, and fulfillment | [![](https://img.shields.io/badge/-bagback.shop-FF2D20?style=flat-square)](https://bagback.shop) |
-| **La Forma** | Bilingual technical services platform and lead-generation for UAE | [![](https://img.shields.io/badge/-laforma.ae-0A7F5A?style=flat-square)](https://laforma.ae) |
-| **Personal Site** | Mohamed Osama's personal website — AI-ready SEO, project archive | [![](https://img.shields.io/badge/-mohamedosama.me-38bdf8?style=flat-square)](https://mohamedosama.me) |
-
----
-
-<div align="center">
-
-[![GitHub](https://img.shields.io/badge/GitHub-mohamedosamaai-181717?style=for-the-badge&logo=github)](https://github.com/mohamedosamaai)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-mohamedosamaai-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/mohamedosamaai)
-[![Personal Site](https://img.shields.io/badge/Personal_Site-mohamedosama.me-38bdf8?style=for-the-badge)](https://mohamedosama.me)
-[![Company](https://img.shields.io/badge/BagbackTech-bagbacktech.com-000000?style=for-the-badge)](https://bagbacktech.com)
-[![Email](https://img.shields.io/badge/Email-hello%40bagbacktech.com-EA4335?style=for-the-badge&logo=gmail&logoColor=white)](mailto:hello@bagbacktech.com)
-
-</div>
+[MIT License](./LICENSE) — Mohamed Osama

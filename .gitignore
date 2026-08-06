@@ -4,17 +4,22 @@ node_modules/
 # Build output
 dist/
 .vite/
+out/
+.next/
 
 # Environment — never commit secrets
 .env
 .env.local
 .env.*.local
+.env.production
+.env.staging
 !.env.example
 
 # Editor workspace files
 *.swp
 *.swo
 .vscode/settings.json
+.idea/
 
 # OS artifacts
 .DS_Store
@@ -22,7 +27,12 @@ Thumbs.db
 
 # Test coverage
 coverage/
+.nyc_output/
 
 # Logs
 *.log
 npm-debug.log*
+pino.log*
+
+# TypeScript build artifacts
+*.tsbuildinfo
