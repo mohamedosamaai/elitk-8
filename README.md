@@ -2,8 +2,12 @@
 
   # elitk-8
 
+  ## 🚀 Google I/O 2026 Showcase Experiment
+
   ### A real-time immersive particle world where sound, voice, presence, and AI shape a cinematic number eight
 
+  [![Google I/O 2026](https://img.shields.io/badge/Google_I/O-2026-4285F4?style=for-the-badge&logo=google)](https://io.google)
+  [![CI](https://github.com/mohamedosamaai/elitk-8/actions/workflows/ci.yml/badge.svg)](https://github.com/mohamedosamaai/elitk-8/actions/workflows/ci.yml)
   [![Three.js](https://img.shields.io/badge/Three.js-WebGL-000000?style=for-the-badge&logo=three.js&logoColor=white)](https://threejs.org)
   [![React Three Fiber](https://img.shields.io/badge/React_Three_Fiber-3D-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://docs.pmnd.rs/react-three-fiber)
   [![TypeScript](https://img.shields.io/badge/TypeScript-Strict-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org)
@@ -20,7 +24,7 @@
 
 ## What This Is
 
-Mohamed Resonance is a real-time immersive 3D experience where thousands of particles respond to sound, voice, camera presence, and touch — converging around a persistent, cinematic number eight.
+**elitk-8** is an interactive, real-time 3D experience designed as a showcase experiment for **Google I/O 2026**. The application merges thousands of magnetic particles responding to user sound, voice, camera presence, and touch — converging around a persistent, cinematic number eight.
 
 Built as a signature creative and technical demonstration, this experiment sits at the intersection of generative 3D, AI interaction, real-time audio analysis, and computer vision — all running in the browser.
 
@@ -69,27 +73,48 @@ Built as a signature creative and technical demonstration, this experiment sits 
 
 ## Architecture
 
-```txt
-User Input Layer
-  ├── Microphone → AudioEngine (FFT + TTS)
-  ├── Camera    → MediaPipe Face Mesh (head position + blink)
-  ├── Mouse     → OrbitControls (drag / zoom / scatter)
-  └── Voice     → Web Speech API → Gemini Assistant
+```mermaid
+graph TD
+    %% Styling
+    classDef client fill:#1e1b4b,stroke:#818cf8,stroke-width:2px,color:#fff;
+    classDef server fill:#0f172a,stroke:#38bdf8,stroke-width:2px,color:#fff;
+    classDef external fill:#1c1917,stroke:#fb923c,stroke-width:2px,color:#fff;
 
-React Three Fiber Scene
-  ├── GPGPU Compute Shader (particle physics)
-  ├── WebGL Particle Renderer (instanced geometry)
-  ├── Shape Morphing System (8+ formations)
-  ├── Glow / Bloom Post-Processing
-  └── Number 8 Focal Geometry
+    subgraph Browser["Browser / Client-Side (React SPA)"]
+        UI["React UI Overlay<br>(App.tsx)"]:::client
+        ParticleEngine["Three.js Particle Engine<br>(Resonance3D)"]:::client
+        AudioEngine["Web Audio Engine<br>(AudioEngine.ts)"]:::client
+        FaceMesh["MediaPipe FaceMesh<br>(useFaceTracker.ts)"]:::client
+    end
 
-AI + Knowledge Layer
-  ├── Gemini SDK (conversational)
-  ├── Local Knowledge Dictionary
-  └── TTS → AudioEngine playback
+    subgraph NodeHost["Local Host (Express Backend)"]
+        Backend["Express Server<br>(server.ts)"]:::server
+    end
 
-Express Backend
-  └── Static serving + API fallback endpoints
+    subgraph ExternalServices["External Cloud API Services"]
+        GeminiAPI["Google Gemini API<br>(Conversational SDK)"]:::external
+        TTSAPI["Google Cloud TTS API<br>(Speech Synthesis)"]:::external
+        CentralLogger["Central Chat Logger<br>(Logging Proxy)"]:::external
+    end
+
+    %% Interactions
+    UI -->|Render & Morph| ParticleEngine
+    UI -->|Direct Conversational Streams| GeminiAPI
+    UI -->|Non-blocking Session Logs| Backend
+    Backend -->|Proxy Metrics| CentralLogger
+    
+    FaceMesh -->|Head Translation / Blink| ParticleEngine
+    
+    UI -->|Trigger Audio Synthesis| AudioEngine
+    AudioEngine -->|TTS Proxy Requests| Backend
+    Backend -->|Proxy Speech Gen| TTSAPI
+    TTSAPI -->|Synthesized MP3 Buffer| Backend
+    Backend -->|Audio Data Stream| AudioEngine
+    AudioEngine -->|FFT Waveform Data| ParticleEngine
+    
+    %% Input Devices
+    Camera["User Camera"] -->|Video Frames| FaceMesh
+    Mic["User Microphone"] -->|Voice Capture| AudioEngine
 ```
 
 ---
