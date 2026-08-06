@@ -32,38 +32,36 @@ The following custom fields have been programmatically created and populated for
 
 ## 3. Project Board Custom Views
 
-Configure the following 8 custom tabs/views on the GitHub Project Board interface to optimize engineering operations:
+The following 8 custom views are programmatically configured on the Project Board (Project #2):
 
-### 🗺️ View 1: 🗺️ System Roadmap
-* **Layout:** Roadmap
-* **Date Field:** `Target Date` / `Iteration`
-* **Group by:** `Milestone` (Target Milestone)
-
-### 📌 View 2: 📌 Kanban Board
-* **Layout:** Board
+### View 1: Kanban Board
+* **Layout:** `BOARD`
 * **Group by:** `Status` (Todo, In Progress, Done)
 
-### 🎯 View 3: 🎯 Planning & Backlog
-* **Layout:** Table
-* **Filter:** `is:open`
-* **Sort by:** `Priority` (Ascending)
-
-### 🚀 View 4: 🚀 Feature Release
-* **Layout:** Table
-* **Group by:** `Milestone` (Target Milestone)
-
-### 🐛 View 5: 🐛 Bug Tracker
-* **Layout:** Table
-* **Filter:** `label:bug`
-
-### 🔄 View 6: 🔄 Sprints & Iteration
-* **Layout:** Board
-* **Group by:** `Iteration`
-
-### 🏗️ View 7: 🏗️ Architecture Breakdown
-* **Layout:** Table
+### View 2: Subsystems Breakdown
+* **Layout:** `TABLE`
 * **Group by:** `Subsystem` (Core AI, Data Layer, Auth/Middleware, DevOps)
 
-### 💡 View 8: 💡 Retrospective & Debt
-* **Layout:** Table
-* **Filter:** `label:refactor` OR `label:tech-debt`
+### View 3: Priority Matrix
+* **Layout:** `TABLE`
+* **Sort by:** `Priority` (Ascending)
+
+### View 4: System Roadmap
+* **Layout:** `ROADMAP`
+* **Date Field:** `Target Date`
+
+### View 5: Planning & Backlog
+* **Layout:** `TABLE`
+* **Filter:** `is:open`
+
+### View 6: Feature Release
+* **Layout:** `TABLE`
+* **Group by:** `Milestone`
+
+### View 7: Bug Tracker
+* **Layout:** `TABLE`
+* **Filter:** `label:bug`
+
+### View 8: Sprints & Iteration
+* **Layout:** `BOARD`
+* **Group by:** `Iteration`
