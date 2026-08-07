@@ -1,2 +1,4 @@
-# Default ownership for repository changes.
 * @mohamedosamaai
+/src/ @mohamedosamaai
+/.github/workflows/ @mohamedosamaai
+/server.ts @mohamedosamaai

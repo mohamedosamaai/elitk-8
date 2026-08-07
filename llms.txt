@@ -1,53 +1,30 @@
-# elitk-8
-
-> Enterprise AI marketing & social automation suite — React 18 + Express 5 + Drizzle ORM + TypeScript
+# ELITK-8
+> Enterprise AI orchestration platform and web application.
 
 ## Project
-
 - Author: Mohamed Osama — mohamedosamaai
-- Homepage: https://8.elitk.com
-- Repository: https://github.com/mohamedosamaai/elitk-8
+- Repo: https://github.com/mohamedosamaai/elitk-8
 - License: MIT
 
 ## Architecture
-
-- Pattern: Full-stack TypeScript monorepo (single-repo, co-located frontend + backend)
-- Frontend: React 19 + Vite 8 + Tailwind CSS 4
-- Backend: Express 4 + Drizzle ORM + PostgreSQL
-- AI Runtime: Google Gemini API (`@google/genai`)
-- 3D / Media: Three.js + React Three Fiber + MediaPipe Face Mesh
-- CI/CD: GitHub Actions (CI + CodeQL security scanning)
-- Containerisation: Docker + Docker Compose
+- Pattern: Full-stack TypeScript monorepo
+- Frontend: React 18 + Vite + Tailwind CSS
+- Backend: Express 5 + Drizzle ORM
+- CI/CD: GitHub Actions + CodeQL
 
 ## Key Engineering Concepts Demonstrated
-
-- Type-safe API contracts with Zod validation schemas
-- Gemini AI agent orchestration with tool-calling pipelines
-- Real-time audio synthesis with Web Audio API
-- GPU-accelerated 3D particle rendering via WebGL / Three.js
-- MediaPipe face-tracking integrated into browser canvas pipeline
-- Express 4 middleware stack: CORS, rate-limiting, structured Pino logging
-- Environment-driven configuration with strict schema validation
-- Multi-stage Docker build for minimal production image size
-- Automated dependency updates via Dependabot with peer-dependency guardrails
+- Type-safe API contracts with Zod
+- Real-time streaming with SSE
+- Docker multi-stage builds
+- Automated security scanning
 
 ## Documentation
-
 - Wiki: https://github.com/mohamedosamaai/elitk-8/wiki
-- README: https://github.com/mohamedosamaai/elitk-8#readme
-- Security policy: https://github.com/mohamedosamaai/elitk-8/blob/main/SECURITY.md
-- Changelog: https://github.com/mohamedosamaai/elitk-8/blob/main/CHANGELOG.md
+- Quickstart: See README.md
+- API Reference: See docs/API.md
 
 ## Files
-
-- `README.md`: Project overview, badges, quickstart guide
-- `server.ts`: Express API entry point with middleware and route registration
-- `src/`: React 19 frontend application (components, hooks, pages)
-- `src/lib/`: Shared utility modules and API client layer
-- `.github/workflows/ci.yml`: Node 22 CI pipeline — type-check → lint → test → build
-- `.github/workflows/codeql.yml`: Automated CodeQL security scanning (weekly + on push)
-- `docker-compose.yml`: Production compose stack (app + PostgreSQL)
-- `docker-compose.dev.yml`: Local development stack with hot-reload
-- `Dockerfile`: Multi-stage build — builder stage → production image
-- `.env.example`: All required environment variables with placeholder values
-- `scripts/`: Utility scripts for showcase extraction and repo automation
+- README.md: Project overview and quickstart
+- server.ts: Express API entry point
+- src/: React frontend application
+- .github/workflows/: CI/CD pipelines
