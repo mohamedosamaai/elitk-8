@@ -9,22 +9,14 @@
     "jsx": "react-jsx",
     "noEmit": true,
 
-    // Strict type safety — all flags explicitly set for clarity
+    // Core strict safety — protects against implicit any and null bugs
     "strict": true,
-    "noImplicitAny": true,
-    "strictNullChecks": true,
-    "strictFunctionTypes": true,
-    "strictBindCallApply": true,
-    "strictPropertyInitialization": true,
-    "noImplicitThis": true,
     "useUnknownInCatchVariables": true,
-
-    // Additional quality flags
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    "noImplicitReturns": true,
     "forceConsistentCasingInFileNames": true,
+
+    // Note: noUnusedLocals, noUnusedParameters, noImplicitReturns are enforced
+    // by ESLint rules instead, allowing per-file suppression during refactoring.
 
     // Library compatibility
     "skipLibCheck": true,
