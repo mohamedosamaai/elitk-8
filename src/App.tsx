@@ -441,10 +441,10 @@ export default function App() {
     const fallbackAr = "حدث اضطراب في الرنين. أعد المحاولة.";
     const fallbackEn = "Resonance interrupted. Try again.";
 
-    let reply = typeof parsed.reply === "string" ? parsed.reply : (targetLanguage === 'ar' ? fallbackAr : fallbackEn);
+    const reply = typeof parsed.reply === "string" ? parsed.reply : (targetLanguage === 'ar' ? fallbackAr : fallbackEn);
     
     const validSentiments = ["neutral", "welcoming", "thinking", "assertive", "angry"];
-    let sentiment = validSentiments.includes(parsed.sentiment) ? parsed.sentiment : "neutral";
+    const sentiment = validSentiments.includes(parsed.sentiment) ? parsed.sentiment : "neutral";
 
     let suggestions: string[] = [];
     if (Array.isArray(parsed.suggestions)) {
@@ -572,7 +572,7 @@ REPLY STRUCTURE:
 
              if (isClean) {
                  // Audio streaming based on 'reply'
-                 const sentenceRegex = /([^\.!\?؟؛،,\n]+[\.!\?؟؛،,\n]+)/g;
+                 const sentenceRegex = /([^.!?؟؛،,\n]+[.!?؟؛،,\n]+)/g;
                  let m;
                  let sentenceEndMatchIndex = 0;
                  while ((m = sentenceRegex.exec(currentReply)) !== null) {

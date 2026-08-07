@@ -1,4 +1,6 @@
-import React, { Component, ErrorInfo, ReactNode } from 'react';
+import type { ErrorInfo, ReactNode } from 'react';
+import { Component } from 'react';
+
 
 interface Props {
   children: ReactNode;
@@ -20,7 +22,7 @@ export class ErrorBoundary extends Component<Props, State> {
     return { hasError: true, error };
   }
 
-  public override componentDidCatch(error: Error, errorInfo: ErrorInfo) {
+  public override componentDidCatch(error: Error, _errorInfo: ErrorInfo) {
     console.warn('[ErrorBoundary] Uncaught component exception:', error.message);
   }
 

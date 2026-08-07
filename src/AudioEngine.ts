@@ -490,7 +490,7 @@ export class AudioEngine {
     if (!sanitizedText) return;
 
     // Append a period if the text doesn't end with a punctuation mark, to prevent TTS from cutting off the final words
-    if (!/[\.!\?؟؛,]$/.test(sanitizedText)) {
+    if (!/[.!?\u061f\u061b,]$/.test(sanitizedText)) {
        sanitizedText += ".";
     }
 
