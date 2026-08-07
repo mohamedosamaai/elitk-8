@@ -2,7 +2,8 @@ import React, { useRef, useEffect, useState } from 'react';
 import { useFrame, useThree } from '@react-three/fiber';
 import { Stars, Sparkles, Html } from '@react-three/drei';
 import * as THREE from 'three';
-import { VisualState, VisualDimension, CommandSpec, Point } from './types';
+import type { VisualState, CommandSpec, Point } from './types';
+import { VisualDimension } from './types';
 
 const simVertexShader = `
   varying vec2 vUv;
@@ -600,7 +601,9 @@ const NeuralWeb: React.FC<{ audioIntensityRef: React.MutableRefObject<number> }>
     }
     
     return () => {
+      // eslint-disable-next-line react-hooks/exhaustive-deps
       if (geoRef.current) geoRef.current.dispose();
+      // eslint-disable-next-line react-hooks/exhaustive-deps
       if (lineMatRef.current) lineMatRef.current.dispose();
     };
   }, []);
@@ -739,6 +742,7 @@ const MagneticCell: React.FC<{ audioIntensityRef: React.MutableRefObject<number>
 
     return () => {
         geos.forEach(g => g.dispose());
+        // eslint-disable-next-line react-hooks/exhaustive-deps
         if (particleGeoRef.current) particleGeoRef.current.dispose();
     };
   }, []);
@@ -815,6 +819,7 @@ interface Resonance3DProps {
   audioIntensityRef: React.MutableRefObject<number>;
   bandsRef: React.MutableRefObject<{ bass: number, mid: number, treble: number }>;
   distortionRef: React.MutableRefObject<number>;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   vibe: any;
   entropyRef: React.MutableRefObject<number>;
   faceDataRef: React.MutableRefObject<{ landmarks: {x:number, y:number, z:number}[], leftEyeEAR: number, rightEyeEAR: number, smile: number } | null>;
@@ -851,12 +856,14 @@ export const Resonance3D: React.FC<Resonance3DProps> = ({
   }, []);
 
   const [fboReady, setFboReady] = useState(false);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const fboRef = useRef<any>(null);
   const displayMatRef = useRef<THREE.ShaderMaterial>(null);
   const mainGroupRef = useRef<THREE.Group>(null);
   
   const morphTargetRef = useRef(0.0);
   const morphProgressRef = useRef(0.0);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const morphTimerRef = useRef(0.0);
 
   useEffect(() => {

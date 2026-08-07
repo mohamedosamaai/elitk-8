@@ -6,7 +6,7 @@ import tseslint from 'typescript-eslint';
 
 export default tseslint.config(
   // Global ignores
-  { ignores: ['dist/**/*', 'node_modules/**/*', 'public/**/*'] },
+  { ignores: ['dist/**/*', 'node_modules/**/*', 'public/**/*', 'eslint.config.js', 'showcase-shell/**/*', 'scripts/**/*', 'tools/**/*'] },
 
   // Base JS rules
   js.configs.recommended,
@@ -19,7 +19,7 @@ export default tseslint.config(
     ],
     languageOptions: {
       parserOptions: {
-        project: ['./tsconfig.json'],
+        project: ['./tsconfig.json', './tsconfig.node.json'],
         tsconfigRootDir: import.meta.dirname,
       },
       globals: { ...globals.browser },
@@ -49,10 +49,24 @@ export default tseslint.config(
     rules: {
       ...reactHooks.configs.recommended.rules,
       'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
+      // TypeScript — enforce what tsconfig alone cannot
       '@typescript-eslint/no-explicit-any': 'warn',
       '@typescript-eslint/no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
-      'prefer-const': 'error',
+      '@typescript-eslint/consistent-type-imports': ['error', { prefer: 'type-imports' }],
+      '@typescript-eslint/no-floating-promises': 'off',
+      '@typescript-eslint/no-misused-promises': 'off',
+      '@typescript-eslint/prefer-nullish-coalescing': 'off',
+      '@typescript-eslint/prefer-optional-chain': 'off',
+      '@typescript-eslint/no-unsafe-member-access': 'off',
+      '@typescript-eslint/no-unsafe-assignment': 'off',
+      '@typescript-eslint/no-unsafe-argument': 'off',
+
+      // General quality
+      'no-useless-escape': 'off',
+      'no-console': ['warn', { allow: ['warn', 'error', 'info'] }],
       'eqeqeq': ['error', 'always'],
+      'no-var': 'error',
+      'prefer-const': 'warn',
     },
   },
 

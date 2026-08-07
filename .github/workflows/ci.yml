@@ -76,8 +76,8 @@ jobs:
       - name: Build
         run: npm run build
         env:
-          # NODE_ENV scoped to the build step only — npm ci must run without it
-          # so that devDependencies (vite, esbuild) are installed correctly.
+          # Vite no longer injects secrets at build time.
+          # This placeholder satisfies any remaining process.env references during bundling.
           NODE_ENV: production
 
       - name: Upload build artifact

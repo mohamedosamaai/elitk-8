@@ -6,22 +6,19 @@
 import React, { useEffect, useRef, useState, useCallback } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { 
-  MousePointer2, 
-  Sparkles, 
   Volume2, 
   VolumeX, 
   Mic, 
   Command,
   Camera,
   Settings,
-  Search,
   Settings2,
   Compass,
-  Palette,
   Hexagon
 } from 'lucide-react';
 import { useFaceTracker } from './useFaceTracker';
-import { VibeMode, Point, FormationType, ParticleShape, CommandSpec, VisualState, VisualDimension } from './types';
+import type { Point, CommandSpec} from './types';
+import { VibeMode, VisualDimension, VisualState, FormationType, ParticleShape } from './types';
 import { VIBE_CONFIGS, LOCAL_CONSENSUS_LOGS, COMMAND_REGISTRY } from './constants';
 import { audioEngine } from './AudioEngine';
 
@@ -75,7 +72,7 @@ export default function App() {
   const [audioEnabled, setAudioEnabled] = useState(false);
   const [micEnabled, setMicEnabled] = useState(false);
   const [visionEnabled, setVisionEnabled] = useState(false);
-  const faceDataRef = useRef<any>(null);
+  const faceDataRef = useRef<{ landmarks: { x: number; y: number; z: number; }[]; leftEyeEAR: number; rightEyeEAR: number; smile: number; } | null>(null);
 
   const lastBlinkTimeRef = useRef(0);
 
@@ -360,7 +357,7 @@ export default function App() {
 
     addLog(`INITIALIZING: ${command.displayName}`, 'status');
     shockwaveRef.current = 1.0;
-  }, [audioEnabled, generateTextTargets, generateBrainTargets, setActiveCommand, setVisualState]);
+  }, [generateTextTargets, generateBrainTargets, setActiveCommand, setVisualState, addLog]);
 
   const mouse = useRef<Point>({ x: -1000, y: -1000 });
 
@@ -387,6 +384,7 @@ export default function App() {
   const bandsRef = useRef({ bass: 0, mid: 0, treble: 0 });
 
   // Voice Command System
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const recognitionRef = useRef<any>(null);
   const [isListening, setIsListening] = useState(false);
 
@@ -415,6 +413,7 @@ export default function App() {
       // Direct pass to AI
       askAI(cmd);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activateCommand, setActiveCommand, setVisualState]);
 
   const detectUserLanguage = (input: string): 'ar' | 'en' => {
@@ -422,7 +421,7 @@ export default function App() {
   };
 
   const parseAIJson = (rawText: string, targetLanguage: 'ar' | 'en'): { reply: string; suggestions?: string[], sentiment: string } => {
-    let parsed: any = {};
+    let parsed: { reply?: string; suggestions?: string[]; sentiment?: string } = {};
     try {
       let cleanText = (rawText || "").trim();
       const firstBrace = cleanText.indexOf('{');
@@ -434,7 +433,7 @@ export default function App() {
       } else {
         throw new Error("No JSON object found in response");
       }
-    } catch (e) {
+    } catch {
       // Non-blocking fallback for unstructured text formats
     }
 
@@ -444,11 +443,11 @@ export default function App() {
     const reply = typeof parsed.reply === "string" ? parsed.reply : (targetLanguage === 'ar' ? fallbackAr : fallbackEn);
     
     const validSentiments = ["neutral", "welcoming", "thinking", "assertive", "angry"];
-    const sentiment = validSentiments.includes(parsed.sentiment) ? parsed.sentiment : "neutral";
+    const sentiment = typeof parsed.sentiment === 'string' && validSentiments.includes(parsed.sentiment) ? parsed.sentiment : "neutral";
 
     let suggestions: string[] = [];
     if (Array.isArray(parsed.suggestions)) {
-       suggestions = parsed.suggestions.filter((s: any) => typeof s === "string");
+       suggestions = parsed.suggestions.filter((s: unknown) => typeof s === "string");
     }
 
     return { 
@@ -557,7 +556,7 @@ REPLY STRUCTURE:
              try {
                 // Properly evaluate unicode escapes to align string lengths
                 currentReply = JSON.parse(`"${currentReplyEscaped}"`);
-             } catch (e) {
+             } catch {
                 isClean = false;
                 // If incomplete trailing escape, do a rough replace, but we shouldn't advance TTS if it's unsafe.
                 currentReply = currentReplyEscaped.replace(/\\n/g, "\n").replace(/\\"/g, "\"");
@@ -673,6 +672,7 @@ REPLY STRUCTURE:
   };
 
   useEffect(() => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const SpeechRecognition = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
     if (SpeechRecognition) {
       const recognition = new SpeechRecognition();
@@ -680,12 +680,14 @@ REPLY STRUCTURE:
       recognition.interimResults = false;
       recognition.lang = 'en-US';
 
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       recognition.onresult = (event: any) => {
         if (!event.results || event.results.length === 0) return;
         const result = event.results[event.results.length - 1][0].transcript;
         executeVoiceCommand(result);
       };
 
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       recognition.onerror = (event: any) => {
         console.error("Speech Rec Error:", event.error);
         if (event.error === 'not-allowed') setIsListening(false);
@@ -702,12 +704,12 @@ REPLY STRUCTURE:
       if (recognitionRef.current) {
         try {
           recognitionRef.current.stop();
-        } catch (e) {
+        } catch {
           // Ignore if already stopped
         }
       }
     };
-  }, [executeVoiceCommand]);
+    }, [executeVoiceCommand]);
 
   const toggleListening = async () => {
     if (!recognitionRef.current) {
@@ -810,7 +812,7 @@ REPLY STRUCTURE:
     lastMouseRef.current = { x: cx, y: cy };
   };
 
-  const handlePointerUp = (e: React.PointerEvent<HTMLDivElement>) => {
+  const handlePointerUp = (_e: React.PointerEvent<HTMLDivElement>) => {
     isDraggingRef.current = false;
     pinchDistRef.current = null;
   };
@@ -906,6 +908,7 @@ REPLY STRUCTURE:
       }, 8000 + Math.random() * 4000);
       return () => clearInterval(interval);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [phase, vibe, audioEnabled]);
 
 
@@ -1399,7 +1402,7 @@ REPLY STRUCTURE:
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                       onClick={() => {
-                        executeVoiceCommand(s);
+                                                executeVoiceCommand(s);
                         setSuggestions([]);
                       }}
                       className="px-4 py-2 bg-blue-500/10 hover:bg-blue-500/20 backdrop-blur-3xl border border-blue-500/20 rounded-full text-sm font-sans text-blue-300 pointer-events-auto whitespace-nowrap shrink-0 transition-colors"
@@ -1494,6 +1497,7 @@ const ToolButton: React.FC<{ icon: React.ReactNode, active?: boolean, onClick: (
       onClick={onClick}
       className={`w-12 h-12 rounded-xl flex items-center justify-center transition-all border ${active ? 'bg-blue-600/20 border-blue-500/50 text-blue-400 shadow-[0_0_15px_rgba(37,99,235,0.2)]' : 'bg-white/5 border-white/5 text-white/50 hover:bg-white/10 hover:text-white'}`}
     >
+      {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
       {React.cloneElement(icon as React.ReactElement, { size: 20 } as any)}
     </motion.button>
   );

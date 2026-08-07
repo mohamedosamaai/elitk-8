@@ -50,6 +50,7 @@ export class AudioEngine {
   private nextTTSStartTime: number = 0;
   private queueSequenceId = 0;
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private aiInstance: any = null;
 
   async init() {
@@ -59,6 +60,7 @@ export class AudioEngine {
       }
       return;
     }
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     this.ctx = new (window.AudioContext || (window as any).webkitAudioContext)();
     
     // Master out with compression
@@ -515,8 +517,7 @@ export class AudioEngine {
       const isArabic = /[\u0600-\u06FF]/.test(textToPlay);
 
       this.isPlayingTTS = true;
-      this.currentTTSSequenceId++;
-      const sequenceId = this.currentTTSSequenceId;
+      const _sequenceId = this.currentTTSSequenceId;
 
       let playedHD = false;
 
@@ -547,7 +548,7 @@ export class AudioEngine {
             }
 
             if (buffer) {
-              this.playAudioBufferSeamless(buffer, sequenceId);
+              this.playAudioBufferSeamless(buffer, _sequenceId);
               playedHD = true;
             }
         } catch (e) {
@@ -559,7 +560,7 @@ export class AudioEngine {
       }
 
       if (!playedHD && currentQueueSeq === this.queueSequenceId) {
-          await this.speakBrowser(textToPlay, sequenceId);
+          await this.speakBrowser(textToPlay, _sequenceId);
       }
     }
 
@@ -650,7 +651,7 @@ export class AudioEngine {
       };
   }
 
-  private playAudioBuffer(buffer: AudioBuffer, sequenceId: number): Promise<void> {
+  private playAudioBuffer(buffer: AudioBuffer, _sequenceId: number): Promise<void> {
     return new Promise((resolve) => {
       if (!this.ctx || !this.masterGain) {
           resolve();

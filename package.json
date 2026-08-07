@@ -13,6 +13,7 @@
   "type": "module",
   "scripts": {
     "dev": "tsx server.ts",
+    "extract:showcase": "node scripts/extract-showcase.mjs",
     "build": "vite build && esbuild server.ts --platform=node --packages=external --bundle --format=cjs --outfile=dist/server.cjs",
     "start": "node dist/server.cjs",
     "preview": "vite preview",

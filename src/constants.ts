@@ -1,4 +1,5 @@
-import { VibeMode, VibeSettings, FormationType, ParticleShape, CommandSpec } from './types';
+import type { VibeSettings, CommandSpec } from './types';
+import { VibeMode, FormationType, ParticleShape } from './types';
 
 export const GOOGLE_COLORS = {
   blue: '#4285F4',

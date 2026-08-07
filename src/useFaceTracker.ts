@@ -103,6 +103,7 @@ export const useFaceTracker = (enabled: boolean, onFaceUpdate: (data: FaceData) 
 
         callbackRef.current({ landmarks, leftEyeEAR: leftEAR, rightEyeEAR: rightEAR, smile });
       } else {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         callbackRef.current(null as any);
       }
     });

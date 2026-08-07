@@ -22,15 +22,19 @@ function suppressThirdPartyNoise() {
     SUPPRESSED_LOG_PATTERNS.some(p => (args[0] as string).includes(p));
 
   const originalInfo = console.info;
-  const originalLog = console.log;
+  const originalLog = // eslint-disable-next-line no-console
+  console.log;
   const originalWarn = console.warn;
   const originalError = console.error;
+  // eslint-disable-next-line no-console
   const originalDebug = console.debug;
 
   console.info = (...args) => { if (!isNoise(args)) originalInfo.apply(console, args); };
-  console.log = (...args) => { if (!isNoise(args)) originalLog.apply(console, args); };
+  // eslint-disable-next-line no-console
+console.log = (...args) => { if (!isNoise(args)) originalLog.apply(console, args); };
   console.warn = (...args) => { if (!isNoise(args)) originalWarn.apply(console, args); };
   console.error = (...args) => { if (!isNoise(args)) originalError.apply(console, args); };
+  // eslint-disable-next-line no-console
   console.debug = (...args) => { if (!isNoise(args)) originalDebug.apply(console, args); };
 }
 

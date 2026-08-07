@@ -6,6 +6,7 @@ dist/
 .vite/
 out/
 .next/
+showcase-shell/
 
 # Environment — never commit secrets
 .env
