@@ -13,7 +13,7 @@ NEAR-TERM FUTURE (2026-2030):
 MID-TERM FUTURE (2030-2040):
 - AI may help doctors detect diseases earlier through pattern recognition in medical imaging and genomic data.
 - Scientific research could accelerate dramatically with AI analyzing experimental results and suggesting hypotheses.
-- AI-generated art, music, and film may become indistinguishable from human-created works, raising new questions about creativity and authorship.
+- Machine-generated art, music, and film may become indistinguishable from human-created works, raising new questions about creativity and authorship.
 - Real-time language translation may eliminate language barriers in live conversations.
 - AI could become a creative partner in architecture, engineering, and urban planning.
 

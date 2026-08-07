@@ -61,7 +61,7 @@ ci: pin GitHub Actions to SHA hashes
 Rules:
 - Subject line ≤ 72 characters
 - Imperative mood ("add" not "added")
-- No AI-generated footers or attribution comments in commit messages
+- No automated footers or attribution comments in commit messages
 - Reference issues with `Closes #<number>` in the commit body or PR description
 
 ## Pull Request Requirements
