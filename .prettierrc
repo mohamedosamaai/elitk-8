@@ -1,0 +1,25 @@
+{
+  "semi": true,
+  "singleQuote": true,
+  "trailingComma": "es5",
+  "tabWidth": 2,
+  "printWidth": 100,
+  "arrowParens": "always",
+  "endOfLine": "lf",
+  "importOrder": [
+    "^(react|react-dom)(.*)$",
+    "^(@react-three/.*)$",
+    "^(three|@three/.*)$",
+    "^(@google/.*)$",
+    "^(@/(.*)$)",
+    "^[./]"
+  ],
+  "importOrderSeparation": true,
+  "importOrderSortSpecifiers": true,
+  "overrides": [
+    {
+      "files": "*.json",
+      "options": { "trailingComma": "none" }
+    }
+  ]
+}

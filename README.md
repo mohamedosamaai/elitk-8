@@ -1,11 +1,11 @@
 # ⚡ ELITK-8 — AI-Native Business Orchestration Platform
 
-![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?style=for-the-badge&logo=typescript)
-![Vite](https://img.shields.io/badge/Vite-6-646CFF?style=for-the-badge&logo=vite)
-![React](https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react)
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-16-336791?style=for-the-badge&logo=postgresql)
-![Google Gemini](https://img.shields.io/badge/Gemini_AI-API-4285F4?style=for-the-badge&logo=google)
-![Build Status](https://img.shields.io/badge/Build-Passing-brightgreen?style=for-the-badge)
+[![CI](https://github.com/mohamedosamaai/elitk-8/actions/workflows/ci.yml/badge.svg)](https://github.com/mohamedosamaai/elitk-8/actions/workflows/ci.yml)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.0_Strict-blue?style=flat-square&logo=typescript)
+![Vite](https://img.shields.io/badge/Vite-6-646CFF?style=flat-square&logo=vite)
+![React](https://img.shields.io/badge/React-19-61DAFB?style=flat-square&logo=react)
+![Google Gemini](https://img.shields.io/badge/Gemini_AI-API-4285F4?style=flat-square&logo=google)
+![License: MIT](https://img.shields.io/badge/License-MIT-green?style=flat-square)
 
 ## 📌 Architecture Overview
 
@@ -120,6 +120,17 @@ elitk-8/
 - All API keys are validated via Zod schemas at server startup — the process exits hard on missing credentials rather than silently degrading.
 - Rate limiting enforced on all `/api` routes (100 req/15min), with stricter limits on `/api/tts` (20 req/15min) to protect Google Cloud billing quotas.
 - No secrets are committed to the repository. See [SECURITY.md](./SECURITY.md) for the responsible disclosure policy.
+
+---
+
+## 📋 Governance
+
+| Document | Purpose |
+|---|---|
+| [CHANGELOG](./CHANGELOG.md) | Release history and breaking changes |
+| [CONTRIBUTING](./CONTRIBUTING.md) | Branch workflow, PR requirements, commit conventions |
+| [CODE_OF_CONDUCT](./CODE_OF_CONDUCT.md) | Community standards |
+| [SECURITY](./SECURITY.md) | Vulnerability disclosure policy |
 
 ---
 
