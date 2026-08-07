@@ -83,7 +83,17 @@ The Express API server starts on `http://localhost:3000`.
 ### 4. Docker (Production)
 
 ```bash
+# Copy and populate your production secrets
+cp .env.example .env.production
+
+# Build and run
 docker-compose up --build
+```
+
+### 5. Docker (Local Dev with Live Reload)
+
+```bash
+docker-compose -f docker-compose.dev.yml up --build
 ```
 
 ---
@@ -93,24 +103,42 @@ docker-compose up --build
 ```
 elitk-8/
 ├── .github/
-│   ├── workflows/         # CI pipeline definitions
-│   └── ISSUE_TEMPLATE/    # YAML issue forms (feature, bug)
-├── public/                # Static assets (manifest, robots, sw.js)
+│   ├── workflows/
+│   │   └── ci.yml              # Three-job pipeline: quality → test → build
+│   ├── ISSUE_TEMPLATE/         # YAML issue forms (feature, bug)
+│   ├── CODEOWNERS
+│   ├── COMMIT_POLICY.md
+│   ├── dependabot.yml          # Grouped weekly updates
+│   └── pull_request_template.md
+├── public/                     # Static assets (manifest, robots, sw.js)
 ├── src/
-│   ├── knowledge/         # Static knowledge routing layer
-│   ├── App.tsx            # Root application component
-│   ├── AudioEngine.ts     # Web Audio API abstraction
-│   ├── ErrorBoundary.tsx  # React error boundary + WebGL fallback
-│   ├── Resonance3D.tsx    # Three.js / WebGL particle engine
-│   ├── constants.ts       # Shared configuration constants
-│   ├── types.ts           # TypeScript interface contracts
-│   └── useFaceTracker.ts  # MediaPipe face tracking hook
-├── tests/                 # Vitest unit/integration tests
-├── server.ts              # Express API server (TTS proxy, rate limiting)
-├── Dockerfile             # Multi-stage production build
-├── docker-compose.yml     # Orchestrated service composition
-├── vite.config.ts         # Vite build and PWA configuration
-└── .env.example           # Sanitized environment variable blueprint
+│   ├── lib/
+│   │   └── ai/
+│   │       └── client.ts       # Gemini REST client abstraction
+│   ├── types/
+│   │   └── agent.ts            # Multi-agent pipeline contracts
+│   ├── knowledge/              # Static knowledge routing layer
+│   ├── App.tsx                 # Root application component
+│   ├── AudioEngine.ts          # Web Audio API abstraction
+│   ├── ErrorBoundary.tsx       # React error boundary + WebGL fallback
+│   ├── Resonance3D.tsx         # Three.js / WebGL particle engine
+│   ├── constants.ts            # Shared configuration constants
+│   ├── types.ts                # TypeScript interface contracts
+│   └── useFaceTracker.ts       # MediaPipe face tracking hook
+├── tests/
+│   └── tts.test.ts             # Vitest unit tests (16 tests)
+├── CHANGELOG.md
+├── CODE_OF_CONDUCT.md
+├── CONTRIBUTING.md
+├── Dockerfile                  # Multi-stage production build
+├── docker-compose.yml          # Production orchestration
+├── docker-compose.dev.yml      # Local dev with live reload
+├── server.ts                   # Express API (TTS proxy, CORS, rate limiting)
+├── tsconfig.json               # Frontend TS config (strict mode)
+├── tsconfig.node.json          # Server-side TS config
+├── vitest.config.ts            # Test runner configuration
+├── vite.config.ts              # Vite build (no secrets in bundle)
+└── .env.example                # Sanitized environment blueprint
 ```
 
 ---

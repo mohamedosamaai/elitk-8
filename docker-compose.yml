@@ -1,14 +1,15 @@
 services:
-  resonance:
+  elitk-8:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: elitk-resonance
     restart: unless-stopped
     expose:
       - "8080"
+    # All secrets are injected at runtime — never in the Dockerfile or image layers.
+    # Copy .env.example → .env.production and populate all required keys before deploying.
     env_file:
-      - .env
+      - .env.production
     environment:
       NODE_ENV: production
       PORT: "8080"
@@ -18,8 +19,8 @@ services:
       timeout: 5s
       retries: 3
       start_period: 15s
-    # Caddy (or any reverse proxy on the same Docker network) handles TLS termination.
-    # The service exposes port 8080 internally; the proxy maps 80/443 externally.
+    # Caddy (or any reverse proxy on caddy_net) handles TLS termination.
+    # Port 8080 is internal only; the proxy maps 80/443 externally.
     networks:
       - caddy_net
     deploy:
@@ -38,4 +39,4 @@ services:
 networks:
   caddy_net:
     external: true
-    # Create before first deploy: docker network create caddy_net
+    # Create once before first deploy: docker network create caddy_net
