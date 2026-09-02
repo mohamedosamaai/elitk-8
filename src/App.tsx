@@ -43,7 +43,7 @@ const WebGLFallback = () => (
 const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
 
 export default function App() {
-  const sessionIdRef = useRef('elitk_' + Math.random().toString(36).substring(2) + Date.now().toString(36));
+  const sessionIdRef = useRef('elitk_' + (typeof crypto !== 'undefined' && crypto.randomUUID ? crypto.randomUUID() : Date.now().toString(36)));
 
   // Non-blocking: logging failures must never interrupt the AI response flow.
   const logToCentralLogger = async (role: 'user' | 'assistant', content: string) => {

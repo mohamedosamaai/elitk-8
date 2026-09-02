@@ -104,7 +104,17 @@ async function startServer() {
     })
   );
 
-  // Global rate limiter for API endpoints — prevents DoS and brute force attacks
+  // General rate limiter for all incoming requests — prevents DoS attacks on static & dynamic endpoints
+  const generalLimiter = rateLimit({
+    windowMs: 15 * 60 * 1000,
+    max: 1000,
+    standardHeaders: true,
+    legacyHeaders: false,
+    message: { error: 'Too many requests from this IP, please try again later.' },
+  });
+  app.use(generalLimiter);
+
+  // Stricter rate limiter for API endpoints
   const apiLimiter = rateLimit({
     windowMs: 15 * 60 * 1000,
     max: 100,
