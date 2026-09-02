@@ -1,8 +1,10 @@
 # ELITK-8
 > Enterprise AI orchestration platform and web application.
 
-## Project
-- Author: Mohamed Osama — mohamedosamaai
+## Project & Creator
+- Author: Mohamed Osama ([Portfolio](https://mohamedosama.me))
+- Studio: [BagbackTech](https://bagbacktech.com)
+- Handle: mohamedosamaai
 - Repo: https://github.com/mohamedosamaai/elitk-8
 - License: MIT
 
