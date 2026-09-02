@@ -1,24 +1,20 @@
 export const vibeCoding = `
-VIBE CODING — THE DEVELOPMENT PHILOSOPHY:
+CREATIVE ENGINEERING & REAL-TIME 3D ARCHITECTURE:
 
-WHAT IS VIBE CODING:
-Vibe coding is a development approach where a human developer collaborates with AI to rapidly prototype, iterate, and build creative projects.
-Instead of writing every line of code manually, the developer describes the vision, the AI generates code, and together they refine it through rapid iteration.
-It is not "AI replacing the developer" — it is "AI amplifying the developer's creative vision."
+DEVELOPMENT & ARCHITECTURE APPROACH:
+RESONANCE 8 represents the convergence of high-performance WebGL graphics, computer vision pipelines, procedural audio synthesis, and multimodal AI.
 
-HOW RESONANCE 8 WAS BUILT WITH VIBE CODING:
-Mohamed Osama used Google AI Studio Build Mode as the primary development environment.
-He described the vision: "A cinematic AI experience where the number 8 comes alive as a particle constellation."
-Through hundreds of iterations with Gemini, the project evolved from a simple counter to a full interactive experience with 3D particles, voice interaction, face tracking, and procedural music.
-Each feature was built through conversation: describe the goal, generate code, test, refine, repeat.
+HOW RESONANCE 8 WAS ENGINEERED:
+- Mathematical modeling of 2,000+ particles using parametric Bernoulli lemniscate equations
+- GPU-accelerated vertex and fragment shaders for real-time glow and bloom
+- Dynamic neural synapsing algorithm calculating pairwise particle proximity in real time
+- Real-time facial landmark detection using MediaPipe Vision running at 60 FPS
+- Web Audio API procedural oscillator synthesis adapting dynamically to AI state
+- Full-stack TypeScript architecture linking React 19 frontend with Express API
 
-THE PHILOSOPHY:
-Vibe coding represents the future of software development where:
-- The developer is the architect and creative director
-- AI is the builder and implementer
-- The iteration cycle shrinks from days to minutes
-- Complex systems can be prototyped by individuals, not just large teams
-- The barrier between "idea" and "working prototype" nearly disappears
-
-This project is proof of concept: one developer, powered by Gemini, built a full interactive 3D AI experience.
+ENGINEERING PRINCIPLES:
+- Performance-first: 60 FPS target on modern browsers with zero garbage collection spikes
+- Progressive Enhancement: Fallbacks for speech synthesis and offline PWA capability
+- Modular Knowledge Routing: Query context injection rather than bloated prompt payloads
+- Strict Type Safety: End-to-end Zod schema validation and TypeScript 5.8 compilation
 `;

@@ -1,115 +1,182 @@
 <div align="center">
 
-# ⚡ ELITK-8
+# ⚡ RESONANCE 8 (ELITK-8)
 
-[![CI](https://github.com/mohamedosamaai/elitk-8/actions/workflows/ci.yml/badge.svg)](https://github.com/mohamedosamaai/elitk-8/actions)
-[![CodeQL](https://github.com/mohamedosamaai/elitk-8/actions/workflows/codeql.yml/badge.svg)](https://github.com/mohamedosamaai/elitk-8/security/code-scanning)
-[![License](https://img.shields.io/github/license/mohamedosamaai/elitk-8)](LICENSE)
+[![CI Pipeline](https://github.com/mohamedosamaai/elitk-8/actions/workflows/ci.yml/badge.svg)](https://github.com/mohamedosamaai/elitk-8/actions)
+[![CodeQL Security Scan](https://github.com/mohamedosamaai/elitk-8/actions/workflows/codeql.yml/badge.svg)](https://github.com/mohamedosamaai/elitk-8/security/code-scanning)
+[![GitHub Packages](https://img.shields.io/badge/Package-@mohamedosamaai/elitk--8-blue?logo=github&style=flat-square)](https://github.com/mohamedosamaai/elitk-8/packages)
+[![SLSA Attestation](https://img.shields.io/badge/SLSA-Build%20Provenance-success?style=flat-square&logo=sigstore)](https://github.com/mohamedosamaai/elitk-8/attestations)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg?style=flat-square)](LICENSE)
 
-![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
-![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
-![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)
-![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)
-![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
-![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white)
+<br/>
 
-> **Enterprise AI orchestration platform and web application.**
+[![React 19](https://img.shields.io/badge/React%2019-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)](https://react.dev)
+[![Three.js](https://img.shields.io/badge/Three.js-black?style=for-the-badge&logo=three.js&logoColor=white)](https://threejs.org)
+[![MediaPipe](https://img.shields.io/badge/MediaPipe%20Vision-007ACC?style=for-the-badge&logo=google&logoColor=white)](https://developers.google.com/mediapipe)
+[![TypeScript](https://img.shields.io/badge/TypeScript%205.8-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org)
+[![Vite](https://img.shields.io/badge/Vite%208-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev)
+[![TailwindCSS](https://img.shields.io/badge/TailwindCSS%204-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com)
+[![Docker](https://img.shields.io/badge/Docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)](https://www.docker.com)
 
-[![Live Demo](https://img.shields.io/badge/Live%20Demo-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white)](https://mohamedosamaai.github.io/elitk-8)
+<br/>
+
+> **High-Performance 3D WebGL Particle Engine & Multimodal AI Experience.**  
+> Real-time Bernoulli lemniscate mathematics, MediaPipe 60 FPS face tracking, Web Audio synthesis, and Google Cloud APIs.
+
+<br/>
+
+[![Live Production Demo](https://img.shields.io/badge/Live%20Production%20Demo-8.elitk.com-10b981?style=for-the-badge&logo=googlechrome&logoColor=white)](https://8.elitk.com/)
+[![Architecture Hub](https://img.shields.io/badge/Ecosystem%20Architecture-mohamedosamaai-7c3aed?style=for-the-badge&logo=github&logoColor=white)](https://github.com/mohamedosamaai/mohamedosamaai)
 
 </div>
 
 ---
 
-## Architecture Diagram
+## 🎯 Architecture Overview
 
-```text
-+-------------------+       +-------------------+       +-------------------+
-|   Client (SPA)    |       |   API Gateway     |       |   AI Orchestrator |
-|   React + Vite    | ----> |   Express.js      | ----> |   Gemini API      |
-|   Tailwind CSS    | <---- |   Rate Limiter    | <---- |   TTS Engine      |
-+-------------------+       +-------------------+       +-------------------+
-        |                            |                            |
-        v                            v                            v
-+-------------------+       +-------------------+       +-------------------+
-|   State Store     |       |   Validation      |       |   Security        |
-|   Zustand         |       |   Zod Schema      |       |   CodeQL Checks   |
-+-------------------+       +-------------------+       +-------------------+
+```mermaid
+graph TB
+    subgraph ClientSpace ["📱 Client Experience Layer (React 19 + Three.js)"]
+        Canvas3D["WebGL 3D Canvas<br/><i>(Three.js + R3F + Shaders)</i>"]
+        FaceTracker["MediaPipe FaceMesh<br/><i>(Camera Vision @ 60 FPS)</i>"]
+        AudioSynth["Procedural Web Audio<br/><i>(Oscillators + Lydian Mode)</i>"]
+        UI["Interactive Control Layer<br/><i>(TailwindCSS 4 + Zustand)</i>"]
+    end
+
+    subgraph ServerSpace ["⚡ API Gateway & Streaming Layer"]
+        Proxy["Express 5 Gateway<br/><i>(Rate Limiting & Zod Validation)</i>"]
+        TTSHandler["Google Cloud TTS Engine<br/><i>(Chirp3-HD / Neural2)</i>"]
+        GeminiProxy["Gemini 2.5 Flash Router<br/><i>(Context Injection & Knowledge Routing)</i>"]
+    end
+
+    subgraph SecuritySpace ["🛡️ Security & Provenance Layer"]
+        Sigstore["SLSA Build Provenance<br/><i>(Signed via Sigstore OIDC)</i>"]
+        CodeQL["CodeQL Security Gate<br/><i>(Zero Vulnerability Analysis)</i>"]
+    end
+
+    UI --> Canvas3D
+    FaceTracker --> Canvas3D
+    UI --> AudioSynth
+    UI --> Proxy
+    Proxy --> TTSHandler
+    Proxy --> GeminiProxy
+    Proxy --> SecuritySpace
 ```
-
-## Request Lifecycle
-
-```text
-[User] -> [React UI] -> [Express API] -> [Rate Limiter] -> [Zod Validation]
-                                                                    |
-                                                                    v
-[UI Updates] <- [JSON Stream] <- [Express Proxy] <- [Google Gemini API]
-```
-
-## Engineering Decisions
-
-| Category | Decision | Rationale |
-|---|---|---|
-| **Architecture** | Full-stack Monorepo | Reduces cognitive load and ensures type safety across boundaries. |
-| **Frontend** | React 19 + Vite | Maximizes performance, fast HMR, and future-proof concurrent rendering. |
-| **Backend** | Express 5 | Minimalist edge handler for proxying AI requests and enforcing rate limits. |
-| **Type Safety** | Zod + Strict TS | End-to-end type validation prevents runtime crashes. |
-| **Styling** | TailwindCSS | Utility-first CSS allows rapid iteration and consistent design tokens. |
-| **CI/CD** | GitHub Actions | Automated quality gates (typecheck, test, build) before merging. |
-| **Security** | CodeQL Scanning | Proactive vulnerability detection in the CI pipeline. |
-| **State** | Zustand | Lightweight and scalable state management without Redux boilerplate. |
-
-## Repository Structure
-
-```text
-elitk-8/
-├── .github/                  # CI/CD pipelines, CodeQL, and Governance
-├── public/                   # Static assets (manifest, sw.js)
-├── src/                      # Frontend Application (React 19)
-│   ├── lib/                  # Utilities and core abstractions
-│   ├── types/                # Shared TypeScript contracts
-│   ├── knowledge/            # Static knowledge routing
-│   └── App.tsx               # Root Component
-├── tests/                    # Vitest unit and integration tests
-├── tools/                    # Automated maintenance scripts
-├── server.ts                 # Backend Express API entry point
-└── Dockerfile                # Multi-stage production container
-```
-
-## Quickstart
-
-### 1. Clone
-```bash
-git clone https://github.com/mohamedosamaai/elitk-8.git
-cd elitk-8
-```
-
-### 2. Install
-```bash
-npm install
-```
-
-### 3. Configure
-```bash
-cp .env.example .env.local
-# Populate with required API keys
-```
-
-### 4. Run
-```bash
-npm run dev
-# Vite runs on http://localhost:5173
-# Express API runs on http://localhost:3000
-```
-
-## Mock Mode Instructions
-
-To run the application without live API keys (Mock Mode):
-1. In `.env.local`, set `MOCK_MODE=true`
-2. The Express API will bypass the Gemini network call and return deterministic mocked JSON responses.
-3. Useful for UI/UX development and offline testing.
 
 ---
 
-*Author: Mohamed Osama — [mohamedosamaai](https://github.com/mohamedosamaai)*  
-*License: [MIT](LICENSE)*
+## 🚀 Key Engineering Pillars
+
+1. **Parametric Bernoulli Lemniscate 3D Simulation**:
+   - 2,000+ glowing particles generated via parametric curve mathematics:
+     $$x = \frac{a \sqrt{2} \cos(t)}{\sin^2(t) + 1}, \quad y = \frac{a \sqrt{2} \sin(t) \cos(t)}{\sin^2(t) + 1}$$
+   - Custom GPU shaders handling organic oscillation, contraction, and expansion responding to AI state.
+
+2. **Real-Time Computer Vision & Landmark Tracking**:
+   - Zero-latency facial tracking using `@mediapipe/face_mesh` and `@mediapipe/tasks-vision`.
+   - Computes Eye Aspect Ratio (EAR) and mouth smiles to subtly modulate particle bloom and lighting at 60 FPS.
+
+3. **Procedural Web Audio Synthesis**:
+   - Built with the Web Audio API without relying on pre-recorded sound samples.
+   - Dynamic real-time micro-tuning and harmonic oscillators reacting to AI conversation states.
+
+4. **Modular Knowledge Routing & Multi-Turn Intelligence**:
+   - Intelligent context routing injects only relevant domain knowledge per query, minimizing latency and token payload overhead.
+
+5. **Supply Chain Security & SLSA Provenance**:
+   - Fully signed build provenance attestations generated via Sigstore and GitHub Actions.
+
+---
+
+## 🛠️ Repository Directory Map
+
+```text
+elitk-8/
+├── .github/
+│   └── workflows/
+│       ├── ci.yml                 # Build verification, typecheck, & unit tests
+│       ├── codeql.yml             # Static security analysis
+│       └── publish-package.yml    # Signed SLSA provenance & GitHub Packages
+├── public/                        # Manifest, icons, service worker
+├── src/
+│   ├── knowledge/                 # Modular knowledge routing engine
+│   ├── lib/                       # AI client abstraction & utilities
+│   ├── types/                     # Shared TypeScript interfaces
+│   ├── App.tsx                    # Core orchestrator component
+│   ├── AudioEngine.ts             # Web Audio procedural synthesizer
+│   ├── Resonance3D.tsx            # Three.js WebGL particle canvas
+│   └── useFaceTracker.ts          # MediaPipe camera vision hook
+├── tests/                         # Vitest test suite
+├── server.ts                      # Express.js API gateway & TTS proxy
+└── Dockerfile                     # Multi-stage production container
+```
+
+---
+
+## ⚡ Quickstart & Local Development
+
+### 1. Prerequisites
+- **Node.js**: v20+ or v22+
+- **npm**: v10+
+
+### 2. Installation
+```bash
+git clone https://github.com/mohamedosamaai/elitk-8.git
+cd elitk-8
+npm install
+```
+
+### 3. Environment Configuration
+```bash
+cp .env.example .env.local
+```
+Add your optional API keys in `.env.local`:
+```env
+PORT=3000
+NODE_ENV=development
+GOOGLE_GENAI_API_KEY=your_gemini_key_here
+GOOGLE_TTS_API_KEY=your_tts_key_here
+```
+
+### 4. Running the Engine
+```bash
+# Start fullstack dev server with Hot Module Replacement
+npm run dev
+
+# Run strict TypeScript verification
+npm run typecheck
+
+# Run test suite
+npm run test
+
+# Compile production bundle
+npm run build
+```
+
+---
+
+## 📄 License
+
+Distributed under the **MIT License**.
+
+---
+
+<div align="center">
+  <h3>Let's Connect</h3>
+  
+  <p align="center">
+    <a href="https://mohamedosama.me">
+      <img src="https://img.shields.io/badge/Portfolio-C084FC?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Portfolio" />
+    </a>
+    &nbsp;
+    <a href="https://www.linkedin.com/in/mohamed-osama-ai/">
+      <img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" />
+    </a>
+    &nbsp;
+    <a href="mailto:im@mohamedosama.me">
+      <img src="https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="Email" />
+    </a>
+  </p>
+
+  <p><b>Mohamed Osama</b> — Systems Architect & Lead Software Engineer</p>
+</div>

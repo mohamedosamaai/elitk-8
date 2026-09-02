@@ -1,8 +1,7 @@
 {
-  "name": "elitk-8",
-  "private": true,
+  "name": "@mohamedosamaai/elitk-8",
   "version": "1.0.0",
-  "description": "AI-native business orchestration platform — Gemini AI pipelines, MediaPipe face-tracking, 3D particle rendering, and Web Audio synthesis.",
+  "description": "AI-native 3D WebGL orchestration platform — Three.js particle mathematics, MediaPipe facial landmarks, and Google Cloud APIs.",
   "author": "Mohamed Osama <im@mohamedosama.me>",
   "homepage": "https://8.elitk.com",
   "repository": {
@@ -11,9 +10,11 @@
   },
   "license": "MIT",
   "type": "module",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
   "scripts": {
     "dev": "tsx server.ts",
-    "extract:showcase": "node scripts/extract-showcase.mjs",
     "build": "vite build && esbuild server.ts --platform=node --packages=external --bundle --format=cjs --outfile=dist/server.cjs",
     "start": "node dist/server.cjs",
     "preview": "vite preview",

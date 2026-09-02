@@ -20,11 +20,11 @@ This project chose the number 8 because:
 - The lemniscate (figure-8 curve) is one of the most beautiful curves in mathematics
 
 HOW THIS PROJECT CONNECTS TO GOOGLE I/O:
-- Built entirely using Google AI Studio Build Mode
-- Powered by Google Gemini API for intelligence
-- Uses Google Cloud TTS for natural voice
-- Demonstrates what developers can create when AI becomes a creative partner
-- Shows the potential of "vibe coding" — building with AI, not just about AI
+- Engineered with modern React 19, TypeScript, and Three.js
+- Powered by Google Gemini API for natural conversation
+- Uses Google Cloud TTS for natural bilingual voice synthesis
+- Demonstrates advanced WebGL particle mathematics and MediaPipe face tracking
+- Engineered by Mohamed Osama as an interactive 3D challenge submission
 
 IMPORTANT: Do NOT claim this project won any award, was featured, or was officially selected by Google unless the user explicitly provides that information. This is a submission to the challenge, and its status should be stated honestly.
 `;
