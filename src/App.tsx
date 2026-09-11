@@ -28,6 +28,7 @@ import { GoogleGenAI } from "@google/genai";
 import { getGreeting, getRelevantKnowledge } from './knowledge';
 
 import { ErrorBoundary } from './ErrorBoundary';
+import { BagbackAppLauncher } from './BagbackAppLauncher';
 
 const WebGLFallback = () => (
   <div className="absolute inset-0 flex flex-col items-center justify-center p-8 text-center bg-[#020205] z-10">
@@ -1075,7 +1076,7 @@ REPLY STRUCTURE:
           </div>
         </div>
 
-        <div className="flex items-center gap-6 pointer-events-auto">
+        <div className="flex items-center gap-4 pointer-events-auto">
           <div className="flex items-center gap-4 px-4 py-2 bg-black/20 backdrop-blur-3xl rounded-xl border border-white/5">
              <div className="flex flex-col">
                 <span className="text-[6px] font-mono text-white/20 uppercase tracking-widest">STABILITY</span>
@@ -1086,6 +1087,7 @@ REPLY STRUCTURE:
                 <span className="text-[10px] font-mono text-red-500/60 font-bold">{metricsUI.entropy.toFixed(0)}%</span>
              </div>
           </div>
+          <BagbackAppLauncher currentApp="elitk" lang="en" />
         </div>
       </nav>
 
