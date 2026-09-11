@@ -1484,6 +1484,19 @@ REPLY STRUCTURE:
               </div>
             </div>
           </div>
+
+          {/* Ecosystem Mesh Attribution Strip */}
+          <div className="mt-2 text-center text-[10px] font-mono text-white/40 flex flex-wrap items-center justify-center gap-1.5 pointer-events-auto">
+            <span>Architected &amp; Founded by</span>
+            <a href="https://mohamedosama.me" target="_blank" rel="noopener noreferrer" className="text-blue-400 font-bold hover:underline">Mohamed Osama</a>
+            <span>|</span>
+            <span className="text-white/70">Founder Institute Cohort</span>
+            <span>|</span>
+            <span>Connect on</span>
+            <a href="https://www.linkedin.com/in/mohamedosamaai/" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">LinkedIn</a>
+            <span>&amp;</span>
+            <a href="https://github.com/mohamedosamaai" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">GitHub</a>
+          </div>
         </div>
       </div>
 
