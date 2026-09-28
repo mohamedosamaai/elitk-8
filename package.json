@@ -1,14 +1,14 @@
 {
   "name": "@mohamedosamaai/elitk-8",
   "version": "1.0.0",
-  "description": "AI-native 3D WebGL orchestration platform — Three.js particle mathematics, MediaPipe facial landmarks, and Google Cloud APIs.",
-  "author": "Mohamed Osama <im@mohamedosama.me>",
+  "description": "High-Performance 3D WebGL Particle Engine & Multimodal AI Experience — Three.js Bernoulli lemniscate, MediaPipe 60 FPS face tracking, Web Audio synthesis, and Google Cloud APIs.",
+  "author": "Mohamed Osama <im@mohamedosama.me> (https://mohamedosama.me)",
   "homepage": "https://8.elitk.com",
   "repository": {
     "type": "git",
     "url": "https://github.com/mohamedosamaai/elitk-8.git"
   },
-  "license": "MIT",
+  "license": "SEE LICENSE IN LICENSE",
   "type": "module",
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"

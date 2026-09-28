@@ -1,32 +1,49 @@
-# ELITK-8
-> Enterprise AI orchestration platform and web application.
+# ELITK-8 (RESONANCE 8)
+> High-Performance 3D WebGL Particle Engine & Multimodal AI Experience.
 
 ## Project & Creator
 - Author: Mohamed Osama ([Portfolio](https://mohamedosama.me))
 - Studio: [BagbackTech](https://bagbacktech.com)
 - Handle: mohamedosamaai
 - Repo: https://github.com/mohamedosamaai/elitk-8
+- Live: https://8.elitk.com
 - License: MIT
 
 ## Architecture
 - Pattern: Full-stack TypeScript monorepo
-- Frontend: React 18 + Vite + Tailwind CSS
-- Backend: Express 5 + Drizzle ORM
-- CI/CD: GitHub Actions + CodeQL
+- Frontend: React 19 + Vite 8 + TailwindCSS 4
+- Backend: Express 5 + Zod validation
+- 3D Engine: Three.js + React Three Fiber + custom GLSL shaders
+- Vision: MediaPipe FaceMesh (60 FPS face tracking)
+- Audio: Web Audio API (procedural synthesis)
+- Hosting: Google Firebase Hosting
+- CI/CD: GitHub Actions + CodeQL security scanning
 
 ## Key Engineering Concepts Demonstrated
+- Parametric Bernoulli Lemniscate 3D simulation (2,000+ particles)
+- Real-time MediaPipe facial landmark tracking (Eye Aspect Ratio, mouth detection)
+- Procedural Web Audio synthesis (Lydian mode, harmonic oscillators)
+- Modular AI knowledge routing with context injection
 - Type-safe API contracts with Zod
-- Real-time streaming with SSE
-- Docker multi-stage builds
-- Automated security scanning
+- Docker multi-stage production builds
+- SLSA build provenance via Sigstore
+- Automated security scanning (CodeQL)
+
+## AI Integration
+- Provider: Google Gemini API (gemini-2.0-flash and above)
+- TTS: Google Cloud Text-to-Speech (Chirp3-HD voices, bilingual AR/EN)
+- All AI keys are server-side only — never exposed to the client bundle
 
 ## Documentation
-- Wiki: https://github.com/mohamedosamaai/elitk-8/wiki
 - Quickstart: See README.md
-- API Reference: See docs/API.md
+- Security: See SECURITY.md
+- Contributing: See CONTRIBUTING.md
 
 ## Files
 - README.md: Project overview and quickstart
-- server.ts: Express API entry point
+- server.ts: Express.js API gateway and TTS proxy
 - src/: React frontend application
+- src/knowledge/: Modular knowledge routing engine
+- src/lib/ai/: AI client abstraction layer
 - .github/workflows/: CI/CD pipelines
+- Dockerfile: Multi-stage production container

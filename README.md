@@ -6,7 +6,7 @@
 [![CodeQL Security Scan](https://github.com/mohamedosamaai/elitk-8/actions/workflows/codeql.yml/badge.svg)](https://github.com/mohamedosamaai/elitk-8/security/code-scanning)
 [![GitHub Packages](https://img.shields.io/badge/Package-@mohamedosamaai/elitk--8-blue?logo=github&style=flat-square)](https://github.com/mohamedosamaai/elitk-8/packages)
 [![SLSA Attestation](https://img.shields.io/badge/SLSA-Build%20Provenance-success?style=flat-square&logo=sigstore)](https://github.com/mohamedosamaai/elitk-8/attestations)
-[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg?style=flat-square)](LICENSE)
+[![License: MIT + Attribution](https://img.shields.io/badge/License-MIT%20%2B%20Attribution-blue.svg?style=flat-square)](LICENSE)
 
 <br/>
 
@@ -130,12 +130,13 @@ npm install
 ```bash
 cp .env.example .env.local
 ```
-Add your optional API keys in `.env.local`:
+Add your keys in `.env.local`:
 ```env
 PORT=3000
 NODE_ENV=development
-GOOGLE_GENAI_API_KEY=your_gemini_key_here
-GOOGLE_TTS_API_KEY=your_tts_key_here
+GEMINI_API_KEY=your_gemini_api_key_here
+GOOGLE_TTS_API_KEY=your_google_tts_api_key_here
+GCP_PROJECT_ID=your_gcp_project_id_here
 ```
 
 ### 4. Running the Engine
@@ -155,9 +156,50 @@ npm run build
 
 ---
 
+## 🚀 Deployment
+
+### Google Firebase Hosting (Production)
+
+The live site at [8.elitk.com](https://8.elitk.com) is hosted on **Google Firebase Hosting**.
+
+```bash
+# Install Firebase CLI
+npm install -g firebase-tools
+
+# Login and initialize (first time only)
+firebase login
+firebase init hosting
+
+# Build and deploy
+npm run build
+firebase deploy --only hosting
+```
+
+### Docker (Self-hosted)
+
+```bash
+# Build production image
+docker build -t elitk-8 .
+
+# Run with environment variables
+docker run -p 3000:3000 \
+  -e GEMINI_API_KEY=your_key \
+  -e GOOGLE_TTS_API_KEY=your_key \
+  elitk-8
+```
+
+---
+
 ## 📄 License
 
-Distributed under the **MIT License**.
+This project is distributed under a **MIT License with Attribution Requirement**.
+
+- ✅ Free for personal, educational, and non-commercial use
+- ✅ Modification and redistribution allowed with attribution
+- ❌ Commercial use requires written permission from the author
+- ❌ Removing author attribution is not permitted
+
+See [LICENSE](LICENSE) for full terms. For commercial licensing: **im@mohamedosama.me**
 
 ---
 

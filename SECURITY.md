@@ -24,9 +24,19 @@ We will acknowledge receipt within **72 hours** and provide a remediation timeli
 ## Secrets & Key Management
 
 - All API keys are server-side only — the Vite client bundle contains no credentials
-- Keys are injected at runtime via environment variables, never baked into Docker image layers
+- Keys are injected at runtime via environment variables, never baked into build output or Docker image layers
 - Use `.env.local` for local development (excluded from version control via `.gitignore`)
-- Production secrets are managed via the deployment platform's secret manager (e.g., Cloudflare Workers secrets, Docker environment injection)
+- Production secrets are managed via the hosting platform's environment configuration (Google Firebase environment variables, or Docker environment injection for self-hosted deployments)
+- Never commit `.env`, `.env.local`, or any file containing real API keys to version control
+
+## Deployment Security
+
+This project is hosted on **Google Firebase Hosting** with the Express backend served as a containerized service.
+
+- Frontend static assets are served via Firebase Hosting CDN
+- The Express API server (`server.ts`) handles all requests requiring API keys
+- CORS is restricted to the production domain (`8.elitk.com`) in production mode
+- Rate limiting is enforced: 100 requests/15 min for API endpoints, 20 requests/min for TTS
 
 ## Known Security Assumptions
 
@@ -36,4 +46,4 @@ We will acknowledge receipt within **72 hours** and provide a remediation timeli
 
 ## Dependency Auditing
 
-Run `npm audit` before any production release. Dependabot is configured to submit weekly PRs for outdated dependencies.
+Run `npm audit` before any production release. Dependabot is configured to submit automated PRs for vulnerable dependencies.

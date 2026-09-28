@@ -2,7 +2,7 @@
  * AI client abstraction layer.
  *
  * All AI interactions in this codebase go through this interface.
- * The underlying provider (Gemini, OpenAI, etc.) is swapped here
+ * The underlying provider is configured here via environment variables
  * without touching any call site.
  */
 

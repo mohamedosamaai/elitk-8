@@ -1,16 +1,36 @@
-MIT License
+MIT License with Attribution Requirement
 
-Copyright (c) 2026 Mohamed Osama
+Copyright (c) 2026 Mohamed Osama (im@mohamedosama.me)
+https://mohamedosama.me | https://github.com/mohamedosamaai
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+of this software and associated documentation files (the "Software"), to use,
+copy, modify, and distribute the Software for personal, educational, or
+non-commercial purposes, subject to the following conditions:
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+── ATTRIBUTION REQUIREMENT ──────────────────────────────────────────────────
+
+1. The above copyright notice, this permission notice, and the following
+   attribution must be included in all copies or substantial portions of the
+   Software, in a reasonably prominent location:
+
+       Originally created by Mohamed Osama — https://mohamedosama.me
+       Source: https://github.com/mohamedosamaai/elitk-8
+
+2. Any derivative work, fork, or project that incorporates this code must
+   clearly credit the original author in its README, documentation, or
+   "About" section. Removing or obscuring this attribution is a violation
+   of this license.
+
+── COMMERCIAL USE RESTRICTION ──────────────────────────────────────────────
+
+3. Commercial use — including but not limited to selling, licensing, or
+   incorporating this Software into a revenue-generating product or service —
+   requires explicit written permission from the copyright holder.
+
+   To request a commercial license, contact: im@mohamedosama.me
+
+── DISCLAIMER ───────────────────────────────────────────────────────────────
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,

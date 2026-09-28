@@ -37,3 +37,8 @@ pino.log*
 
 # TypeScript build artifacts
 *.tsbuildinfo
+
+# Firebase local deployment files (project-specific, not for version control)
+.firebase/
+.firebaserc
+firebase.json
