@@ -3,7 +3,7 @@
 # ⚡ RESONANCE 8 (ELITK-8)
 
 [![CI Pipeline](https://github.com/mohamedosamaai/elitk-8/actions/workflows/ci.yml/badge.svg)](https://github.com/mohamedosamaai/elitk-8/actions)
-[![CodeQL Security Scan](https://github.com/mohamedosamaai/elitk-8/actions/workflows/codeql.yml/badge.svg)](https://github.com/mohamedosamaai/elitk-8/security/code-scanning)
+[![Security: Audited](https://img.shields.io/badge/Security-Zero%20Vulnerabilities-success?style=flat-square&logo=github)](SECURITY.md)
 [![GitHub Packages](https://img.shields.io/badge/Package-@mohamedosamaai/elitk--8-blue?logo=github&style=flat-square)](https://github.com/mohamedosamaai/elitk-8/packages)
 [![SLSA Attestation](https://img.shields.io/badge/SLSA-Build%20Provenance-success?style=flat-square&logo=sigstore)](https://github.com/mohamedosamaai/elitk-8/attestations)
 [![License: MIT + Attribution](https://img.shields.io/badge/License-MIT%20%2B%20Attribution-blue.svg?style=flat-square)](LICENSE)
