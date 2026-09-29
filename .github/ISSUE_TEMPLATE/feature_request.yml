@@ -20,7 +20,7 @@ body:
         - Audio Engine & TTS
         - Face Tracking & MediaPipe
         - API Server & Middleware
-        - Database & ORM Layer
+        - Knowledge & Context Engine
         - CI/CD & DevOps
         - Documentation
         - Other
